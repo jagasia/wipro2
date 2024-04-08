@@ -10,6 +10,9 @@ Trainer name: Jagadeeswaran R
 holidays:
 	09-Apr
 	11-Apr
+
+Session starts at : 08:45 am
+Session ends at : 17:45 pm
 -------------------------------------------------
 Providing solutions using computers:
 	i) data structures
@@ -204,6 +207,54 @@ algo 2:	Can you find list of prime numbers from X and Y?
 
 	finding if a number is prime or not, is already solved using algo1,
 	then repeat this algo1 in a loop in algo2.
+------------------------------------------------------------
+Sorting algorithms: Bubble, Selection, Insertion Sort			
+Searching algorithms: Linear Search, Binary Search			
+
+Searching
+	can you list some searching techniques:
+		i) sequential/ linear search	linked list, array, etc
+		ii) binary search		sorted 
+		iii) hashing		stored based on hashcode
+
+
+Sequential/ Linear searching algorithm:
+	start from beginning, check every element (whether it is equal to the value we search).
+	stop until
+		we found the element
+		or
+		end of the list is reached
+
+Order of Growth:
+	if the list is small, then search duration is less
+	if the list is large, then search duration is more
+	O(N)
+		if list length is 1, then 1 comparison to find or determine that it is not found
+			
+		if list length is N, then N comparison
+in worst case scenario.
+
+in best case scenario, we can find the element in 1 comparison
+		if 1st element itself is the element we are searching for.
+
+best case 1 comparison
+worst case N comparison
+
+
+Binary Search
+	does not require N comparison in best / worst case scenario.
+
+10, 12, 18, 22, 23, 24, 50, 55, 100, 101, 109, 120, 125
+
+the above list contains elements in sorted manner.
+so, how we can search an element using binary search?
+Task:
+	Write an algorithm for the above requirement.
+
+
+
+
+
 
 
 
