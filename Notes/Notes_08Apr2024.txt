@@ -251,16 +251,564 @@ so, how we can search an element using binary search?
 Task:
 	Write an algorithm for the above requirement.
 
+Recursion:
+	A function calling to itself.
+
+If somebody asks what is the factorial of 100?
+	100 * 99!
+	99 * 98!
+
+
+Problem with recursion, is
+	everytime, a function calls another function, 
+	the function is pushed to call stack
+
+main()
+	fn1()
+		fn2()
+			fn3()
+				fn4()
+
+which function will complete first?	ends first?		exits first?
+	fn4()
+		fn3()
+			fn2()
+				fn1()
+					main()
+
+
+Stack	->	LIFO		Last In First Out
+
+In java, the primitive data type variables
+	are created in memory structure
+	called as "Stack"			(There is some else called as "Heap")
+
+	int i=20;			//	i is a variable created in memory structure called "Stack"
+Why this memory structure is called as stack?
+
+in java, any variable, you declare inside a method (function) is created in "stack" only.
+
+-------------------------Look at 2 scenarios below------------------
+class A
+{
+	public void display()
+	{
+		int i=20;		//	i is created in "stack" memory
+	}
+}
+
+----------------------next scenario----------------
+class B
+{
+	int i=20;			//	i is a part of B. the object of B is created in "heap" memory
+}
+
+//somewhere
+
+public void show()
+{
+	new B();			//	an object is created in Heap memory
+	B obj;			//	obj is created in Stack memory
+	B b=new B();		//	new obj is created in heap and its ref is kept in stack "b"
+}
+
+stack can be imagined as a Locker room.
+every locker has a lable. Label is the name of variable
+stack can contain value/reference
+	int i=20;		//in a method
+	if you open the locker (i) then you can see value 20
+	B obj;		// in a method
+	if you open the locker (obj)	then you see nothing		null
+	B b=new B();
+	if you open the locker (b) 	then you see reference to heap memory (new B()) is found
+
+primitives are value types, which can be stored in stack.
+objects are ref types, so we cannot store them in stack. So they are stored in heap. 
+Their references can be kept in stack.
+
+
+-------------------------------------------
+10, 12, 18, 22, 23, 24, 50, 55, 100, 101, 109, 120, 125
+
+for binary search:
+	Dictionary		(to find meanings of english words. Also to get some synonyms)
+	Telephone directory	
+
+		these are examples for information which is present in sorted manner.
+
+in dictionary, how do i find a word "training"
+	training is an english word. 
+
+will i start searching for this word in dictionary from first page to last?
+	sequential search?	NO
+
+	I will take the middle of the dictionary
+		if search item is found in middle, then STOP searching. because we have found
+		if not matching, then	
+			search, LEFT  portion or	the RIGHT portion
+			LEFT? or RIGHT? how do you decide?
+			search item is lesser than MIDDLE, then Search in LEFT portion
+			search item is greater then MIDDLE, the Search in RIGHT portion
+
+
+10, 12, 18, 22, 23, 24, 50, 55, 100, 101, 109, 120, 125
+
+1) Accept input for n.		n => number of elements
+2) Accept n inputs from the user
+3) Accept input from the user and assign it to a variable "searchItem"
+4) Algorithm to search starts here:
+	i) start=0
+	end=n-1
+	ii) Find the middle index
+		middle=(start-end)/2
+	iii) check if element(middle) = searchItem
+		a) Yes means, "FOUND", then exit
+		b) No, means
+			Check if searchItem< element(middle)
+				yes, then search from left.
+				end=middle-1
+				no, then search from right.
+				start=middle+1
+	if start<end
+		Repeat from ii)
+	else
+		Exit with a message "NOT FOUND"
+
+	
+https://builtin.com/data-science/pseudocode
+---------------------------------------------------------------
+
+Why, left side when search item is smaller than middle?
+Why, right side when search item is bigger than middle?
+
+Searching
+	sequential/ linear
+	binary
+	hashing
+
+Hashing:
+
+	suppose, i am the supervisor for an examination hall.
+	if you enter and say your rollno is 45,
+		i ask you to sit down at 4th row, 5th column
+	
+	if you enter and say your rollno is 73,
+		i ask you to sit down at 7th row, 3rd column
+
+i can find any person very quickly based on their rollno.
+
+	if you arrange elements using hashing function,
+	then you can find those elements easily using the hashing function.
+
+how will i find the person whose roll number is 81?
+	8th row, 1st column
+
+This arrangment is not sequential.
+assuming that there are 
+	10 rows	& 10 columns in the hall
+
+ID /10	=> Row number
+ID %10	=> Column number
+
+this is my hashing algorithm.
+Hashing function can have any algorithm to 
+	position the element.
+
+/10
+%10
+	is my algorithm.
+
+suppose, if the hall has 
+	4 rows and 4 columns
+
+rollnos:
+87
+90
+88
+12
+13
+14
+15
+19
+22
+23
+24
+25
+80
+----------lets position these rollnos
+/4
+%4
+
+87/4	21
+87%4	3
+		21st row	3rd column
+
+90/4	22
+90%4	2
+		22nd row	3rd column
+
+88/4	22
+88%4	0
+		22nd row	0th column
+
+12/4	3
+12%4	0
+		3rd row 	0th column
+
+13/4	3
+13%4	1
+		3rd row 	1st column
+
+14/4	3
+14%4	2
+		3rd row	2nd column
+
+15/4	3
+15%4	3
+		3rd row	3rd column
+
+19/4	4
+19%4	3
+		4th row	3rd column
 
 
 
 
+row can be considered as exam Hall.
+	all rollnos, whose row is same, go to same hall no.
+
+	hall is called as "Bucket"
+
+if 2 rollnos have same hashcode, it is called as "collision"
+to solve, this,
+	rehashing
+	bucket hashing
+
+key	-	offset
+
+based on key, we can find the relative location to find the element
+
+a function that identifies/computes the location based on key => Hashing function.
 
 
+Hashing is faster than binary/ sequential search algorithms.
+
+---------------------------------------
+Sorting
+----------
+	When we have list of elements
+	ex:
+		array
+110, 121, 118, 212, 123, 214, 150, 551, 1091, 1121, 119, 1112, 125
+
+how can we sort these elements of list.
+
+Question:
+	what are the different types of sorting?	
+
+simplest sorting algorithm to write is
+	bubble sort
+
+N=13
+
+Pass 1:
+	12 comparisons
+
+Pass 2:
+	11 comparisons	(we ignore last element, which is already the highest).
+
+Pass 3:
+	10 comparisons
+
+Pass 4:
+	9 comparisons
+
+Pass 5:
+	8 comparisons
+
+Pass 6:
+	7 comparisons
+
+Pass 7:
+	6 comparisons
+
+Pass 8:
+	5 comparisons
+
+Pass 9:
+	4 comparisons
+
+Pass 10:
+	3 comparisons
+
+Pass 11:
+	2 comparisons
+
+Pass 12:
+	1 comparison
 
 
+Best and Worst case scenario:
+	in any scenario, this bubble sort is going to perform blindly all passess and corresponding number of 	comparisons.
+
+
+for 13 elements,
+	12 passes
+
+totally how many comparisons?
+	12 + 11 + 10 ..... 3 + 2 + 1		=		78
+
+	13(12)/2	=13*6	=	78		
+
+5 elements
+	4 + 3 + 2 + 1	=	10
+
+	N(N-1)/2
+	
+
+	5(4)/2	=15
+
+
+bubble sort do the following number of comparisons:
+	N(N-1)/2
+in all scenarios.
+
+	O(N power 2)
+
+poorest algorithm to sort 
+
+class Mathematics
+{
+	public void swap(MyInt i MyInt j)		//MyInt is my own class
+	{
+		if you swap i and j then the actual parameters will be swapped
+	}
+	public void swap(Integer i, Integer j)
+	{	
+		//write your code here
+		//if i and j are swapped, then will the actual paramters be swapped?????????
+		unboxing is automatic		auto boxing.	auto unboxing
+		int b=20;
+		Integer a=b;	//b is primitive, a is wrapper.	autoboxing from jdk 1.5 onwards
+		b=a;		//auto unboxing
+		//it is always, the values are copied when it comes to wrappers vs primitives
+
+		//NO
+	}
+}
+
+---------------------------------------
+Selection sort:
+-------------------
+Identify how selection sort works.
+
+selection will change in every pass:
+Pass 1:
+	selection is 		index 0 to n-1
+Pass 2:
+	selection is		index 1 to n-2
+
+in each pass, the 
+	lowest element in the selection is found
+	and kept in left index
+	highest element is kept in n-pass
+
+
+--------------------
+Insertion sort:
+-------------------
+Playing cards
+
+11	12	13	2	3	4	5	7	8	9
+
+
+------------------------------
+Control Flow Constructs and Flowcharts			
+Conditional Constructs: If, Else, Switch			
+Looping Constructs: For, While, Do-While			
+Creating and Interpreting Flowcharts			
+
+
+Flow chart
+---------------
+we can represent an algorithm in a diagramatic representation using flow chart.
+Advantage, is it is language neutral.
+It can be used by any programmer in any programming language.
+
+it is steps
+conditions - branches
+true
+false
+loops
+
+Flat oval		=	Start, Stop
+Parallelogram	=	Input, Output
+Diamond		=	If condition
+Hexagon		=	Loops
+Circle		=	On page Connector
+Rectangle		=	Executable code
+
+Activity:
+Identify the symbols used in flowchart
+Ref:
+https://www.visual-paradigm.com/tutorials/flowchart-tutorial/	
+
+
+whenever you write if conditions,
+condition should be most probable.
+
+For example, 
+input marks
+if(marks>=90)
+	print ("Excellent")
+else if(marks>=80 && marks <90)
+	print ("Good")
+else if(marks>=70)
+	print ("Satisfactory")
+else
+	print ("Fail")
+
+mostly the marks are poor, then
+
+if(marks<70)
+	print ("Fail")
+else if(marks<80)
+	print ("Satisfactory")
+else if(Marks<90)
+	print ("Good")
+else
+	print ("Excellent")
+
+ 
+Task:
+	Tell me when will you use switch -case instead of if?
+
+
+if you are using lot of == and only ==
+then think about using switch case
+
+when we use <, > and other comparison, 
+we cannot use switch
+
+
+if(rating==5)
+	print "excellent"
+else if(rating == 4)
+	print "good"
+else if(rating == 3)
+	print "satisfactory"
+else 
+	print "poor"
+
+notice that you are using == only
+
+switch(rating)
+{
+	case 5:
+		print "excellent"
+		break;
+	case 4:
+		print "good"
+		break;
+	case 3:
+		print "satisfactory"
+		break;
+	default:
+		print "poor"
+}
+
+based on break statement
+
+switch(x)
+{
+	case 5:
+		print "Good"
+	case 4:
+		print "Good"
+	case 3:
+		print "Good"
+	case 2:
+		print "Good"
+	case 1:
+		print "Good"
+{
+
+THERE IS NO BREAK IN THE ABOVE PROGRAM.
+
+	if x is 5
+		then Good is printed 5 times
 		
+good is printed x times and provided if it is between 1 and 5
+
+
+Integer count=map.get(key);
+if(count==null)
+	count=0;
+count++;
+
+if count is null
+	it becomes 1
+else
+	it becomes +1
+
+
+in java:
+switch(ch)
+{
+	case 'a':
+	case 'e':
+	case 'i':
+	case 'o':
+	case 'u':
+		print "vowel"
+		break;
+}
+
+GWBASIC
+BASICA
+	SUB ROUTINE
+		is similar to functions is C language
+
+GO SUB CALCULATESI
+
+
+Just create one sub routine that checks if a number is a prime number or not.
+
+then call this subroutine in a for loop
+	from x to y
+		each number between x and y
+		are checked if it is prime or not
+
+
+NOT
+AND
+OR
+
+AND
+	TRUE AND FALSE	=	FALSE
+	FALSE AND TRUE	=	FALSE
+	TRUE AND TRUE	=	TRUE
+	FALSE AND FALSE	=	FALSE
+
+OR
+	TRUE OR FALSE	=	TRUE
+	FALSE OR TRUE	=	TRUE
+	FALSE OR FALSE	=	FALSE
+	TRUE OR TRUE	=	TRUE
+
+NOT 
+	TRUE		=	FALSE
+	FALSE		=	TRUE
 
 
 
+Operators have order of precedence
+BODMAS
+Bracket
+Orders (exponents and roots)
+Division
+Multiplication
+Addition
+Subtraction
 
+Left to Right
