@@ -143,6 +143,26 @@ How pseudo code differs from algorithm?
 	It does not have any rules.
 
 
+Lets write algorithm to find the smallest of an array.
+	89, 79, 99, 10, 32, 24, 53, 37, 74, 48
+
+Algorithm
+	read 1 element from the array from left to right and keep it in a variable "current".
+	check if next element is smaller than this element
+	if yes, then current element is updated with the next element. Else no change in current element.
+	repeat the process with next element as current.
+	once last element is reached, display the current element as smallest element
+
+Task:
+-------
+For the above algorithm, write a pseudo code.
+
+Pseudo code rules:
+	keywords in capital letter
+
+
+
+
 
 
 
