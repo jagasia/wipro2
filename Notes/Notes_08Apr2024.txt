@@ -1,0 +1,152 @@
+Welcome to all participants.
+Trainer name: Jagadeeswaran R
+
+10 days
+3	Algo & DS
+6	Java
+1	Assessment
+
+08-Apr-2024 to 23-Apr-2024
+holidays:
+	09-Apr
+	11-Apr
+-------------------------------------------------
+Providing solutions using computers:
+	i) data structures
+	ii) algorithms
+
+simple computation
+	i) adding 2 numbers
+	ii) rocket science
+
+always there will be data and algo
+
+2+3
+	data 	2 and 3
+	algo	addition
+
+
+class Employee
+{
+	int id;
+	String name;
+
+	public void setId(int id)
+	{
+		this.id=id;
+	}
+}	
+
+a class contains?
+	data		(datastructure)
+	methods		(algo)
+
+
+Perfect combination of algo & ds will sovle the problem effectively.
+
+If you want to apply binary search, then
+the data should be in which form?
+	Sorted
+	Ascending/ Descending
+
+conclusion:
+	you cannot apply binary search algorithm on any datastructure but sorted one.
+
+Array
+	i can use index to find an element at any location of the array.
+
+Binary Tree		in order, pre order, post order	
+	how can i find an element at specific index?		NOT possible
+
+ANY Alogirthm cannot work with ANY datastructure.
+a perfect combination is important.
+
+Before writing a code, 
+we write
+	algorithms
+we draw
+	flowcharts
+we write
+	pseudo code
+
+These approaches are language neutral.
+
+suppose, when a team leader want to share the logic to the team.
+the team may be sometimes, dotnet team, js team, or java team.
+
+Irrespective of whichever team, this leader is leading, still can communicate the logic to the team in a neutral way.
+
+
+Programming Constructs			
+Algorithms and Problem-Solving			
+
+we can dry run any of these.
+
+Introduction to Programming Constructs			
+	VARIABLES
+	CONSTANTS
+	DECLARATION
+	EXPRESSIONS
+	STATEMENTS
+	SEQUENCE
+	OUTPUT
+	GOTO
+	IF
+	IF ELSE
+	IF ELSEIF ELSE			in PL/SQL		ELSIF
+	NESTED IF
+	SWITCH
+	WHILE
+	DO WHILE
+	FOR
+	BREAK
+	EXIT
+	CONTINUE
+	SUBROUTINES/	FUNCTIONS
+
+There are 2 things in a program
+	declarations
+	executable code
+		any code written inside a function/method are executable code
+
+
+class App
+{
+	//anything outside a method is not executable section, but DECLARATION is allowed
+	int i=0;
+	float f=1.2f;
+
+		System.out.println("Hello world");	//NOT ALLOWED
+
+	public static void main(String args[])
+	{
+		i=20*30;
+		System.out.println("Hello world");
+		//is executable section
+	}	
+}
+
+in python it is elif
+
+X="Raja"
+X*2		"RajaRaja"
+
+Pseudo code:
+------------------
+	is a language closer to English so that anybody can understand.
+	It is not meant to execute. But there are some pesudo code compilers now a days to execute pseudo code.
+	But you have to follow the keywords and symbols mentioned by those compilers.
+
+How pseudo code differs from algorithm?
+	Algorithms does not have any keywords.
+	It can be written in any language, preferrably English.
+	It does not have any rules.
+
+
+
+
+
+
+
+
+
