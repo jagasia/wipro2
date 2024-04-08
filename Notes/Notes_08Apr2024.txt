@@ -161,11 +161,54 @@ Pseudo code rules:
 	keywords in capital letter
 
 
+All Algorithms must satisfy the following criteria -
+
+1) Input
+There are more quantities that are extremely supplied.
+2) Output
+At least one quantity is produced.
+3) Definiteness
+Each instruction of the algorithm should be clear and unambiguous.
+4) Finiteness
+The process should be terminated after a finite number of steps.
+5) Effectiveness
+Every instruction must be basic enough to be carried out theoretically or by using paper and pencil.
+
+What are the properties of algorithm?
+Non Ambiguity
+Each step in an algorithm should be non-ambiguous. That means each instruction should be clear and precise. The instruction in any algorithm should not denote any conflicting meaning. This property also indicates the effectiveness of algorithm.
+Range of Input
+The range of input should be specified. This is because normally the algorithm is input driven and if the range of input is not being specified then algorithm can go in an infinite state.
+Multiplicity
+The same algorithm can be represented into several different ways. That means we can write in simple English the sequence of instruction or we can write it in form of pseudo code. Similarly, for solving the same problem we can write several different algorithms.
+Speed
+The algorithmis written using some specified ideas. Bus such algorithm should be efficient and should produce the output with fast speed.
+Finiteness
+The algorithm should be finite. That means after performing required operations it should be terminate.
+
+
+
+Effectiveness & Efficiency
+
+This algorithm follows effective approach or not.
+Efficiency is measured after following that approach.
+
+
+Scalability and multiplicity:
+algo 1:	Can you find if a number is prime number or not?
+		Yes. A number >1 and is divisible only by itself and 1
+
+algo 2:	Can you find list of prime numbers from X and Y?
+		X and Y are inputs.
+		in this algo, the above previous algo can help?
+
+	finding if a number is prime or not, is already solved using algo1,
+	then repeat this algo1 in a loop in algo2.
 
 
 
 
-
+		
 
 
 
