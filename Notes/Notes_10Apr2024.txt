@@ -223,22 +223,183 @@ I want to list the sorting algorithms
 and their order of growth in Big O notation.
 
 
+Graph:
+----------
+Vertex and Edge
+Vertices and Edges
+
+Chennai	->	Hyderabad
+		     |
+		     V
+
+	<-	Bengaluru
 
 
 
 
+first we need created Vertices
+and then create edges between vertices. We can add some value to these edges.
+
+Chennai to Hyderabad	=	750 kms
+Hyderabad to Bengaluru	=	580 kms
+Bengaluru to Chennai	=	350 kms
+
+i want to go from
+	chennai to hyderabad via bengaluru
+
+		350 + 580	=	930
+
+	chennai to hyderabad	750
+
+
+What is the shortest route from 1 to 5?
+route 1:
+1 -> 2 -> 3 -> 5
+8+7+14	=	29
+route 2:
+1 -> 2 -> 5
+8+4	=	12	BEST ROUTE
+route 3:
+1 -> 2 -> 8 -> 6 -> 5
+8+2+6+2	=	18
+route 4:
+1 -> 7 -> 6 -> 5
+11+1+2	=	14
+route 5:
+1 -> 0 -> 7 -> 6 -> 5
+4+8+1+2	=	15
+
+
+What is the difference between BFS and DFS in graph?
+[12:20] Ajay
+BFS uses the queue to keep track of the next location that it should visit.
+[12:20] Komal Shivaji Londhe (Unverified)
+BFS works on the concept of FIFO (First In First Out). 
+
+DFS works on the concept of LIFO (Last In First Out).
+
+BFS is more suitable for searching vertices closer to the given source.	
+
+DFS is more suitable when there are solutions away from source.
+[12:21] Ajay
+Dfs uses the stack to keep track of the next location that it should visit
+
+BFS uses Queue:
+
+Queue:
+	3	5
+
+1 comes out.
+another queue
+	1	2	8	6	5
+
+2 comes out
+	2	8	6	5
+	2	3	5
+
+
+3 comes out
+	
+-------------------------
+Hash Table
+----------------
+	what are the columns in hash table?
+		Key	Offset
+
+In java we have a datastructure called hashtable
+	Hashtable
+
+Key is a set. Set means, does not allow duplicates
+
+key	value
+1	India
+2	Australia
+3	Japan
+3	China		Japan is replaced by China
+null	Argentina
+null	USA		Argentina is replaced by USA
+
+values can be null.
+can key be null?????????
+	yes, one null is allowed
+	second null means duplicate.
+
+RDBMS
+UNIQUE constraint allows NULL. How many NULLs allowed?		any number of NULLs allowed.
+PRIMARY KEY does not allow NULL
 
 
 
 
+import java.util.*;
+public class App12
+{
+	
+	public static void main(String args[])
+	{
+		HashMap<Integer, String> map=new HashMap<>();
+		map.put(null,"Japan");
+		map.put(null,"China");
+		System.out.println(map);
+	}
+}
+
+
+
+D:\Jag\wipro\Apr2024>java App12
+{null=Japan}
+
+D:\Jag\wipro\Apr2024>javac App12.java
+
+D:\Jag\wipro\Apr2024>java App12
+{null=China}
+
+D:\Jag\wipro\Apr2024>
 
 
 
 
+-- CREATE TABLE DUMMY
+-- (
+-- SNO INT unique,
+-- NAME VARCHAR(20)
+-- );
+
+INSERT INTO DUMMY VALUES (NULL, 'China'); 
+
+select * from dummy;
 
 
+(null)	Japan
+(null)	China
+
+Entry
+	key
+	value
+
+import java.util.Hashtable;
+
+public class App {
+
+	public static void main(String[] args) {
+		Hashtable<Integer, String> countries=new Hashtable<>();
+		countries.put(1, "India");
+		countries.put(2, "Pakistan");
+		countries.put(3, "Japan");
+		countries.put(3, "China");
+		
+		System.out.println(countries);
+	}
+
+}
 
 
+{3=China, 2=Pakistan, 1=India}
 
 
+Hashing
+Collision
+Rehashing
+Bucket hashing
+these concepts are algo & ds concepts to learn in hashing chapter.
 
