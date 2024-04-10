@@ -518,5 +518,158 @@ Task:
 	advantages and disadvantages.
 
 
+Quick sort uses a pivot to divide the list into 2
+
+	10, 20 ,30, 55, 40, 50, 60
+
+now, the pivot is position betwen 30 and 55
+because, the list is already sorted upto 30
+
+10,20,30		55,40,50,60
+
+some times, the pivot is kept after the 1st element, when the list is not having any subset of sorted elements.
+some times, the pivot is kept after the last element, when the list already sorted.
+
+when we move elements from right side (unsorted) to left side (sorted), the elements are kept in such that, the left side is maintained in sorted manner.
+
+---------------------------
+Heap Sort:
+---------------
+Identify what is heap sort
+	Find the minimum element and keep it in the beginning of the list.
+
+51
+40
+30
+25
+45
+61
+54
+70
+33
+59
+
+after adding these elements to a binary search tree.
+if i do in order traversal. it will give me sorted list
+
+25
+30
+33
+40
+45
+54
+55
+59
+61
+70
+
+Jag Sort algorithm?
+	create a binary search tree and add the elements to the tree.
+Do an in order traversal. You will get sorted list.
+
+Trees:
+--------
+what are the types of trees?
+Binary Trees: A tree structure where each node has at most two children.
+Binary Search Trees (BST): A binary tree where the left child is less than the parent node, and the right child is greater.
+AVL Trees: Self-balancing binary search trees where the heights of the two child subtrees of any node differ by at most one.
+Red-Black Trees: Self-balancing binary search trees with constraints on coloring to maintain balance.
+Decision Trees: Used in decision analysis to model decisions and their possible consequences.
+Syntax Trees (Parse Trees): Represent the syntactic structure of sentences in programming languages or mathematical expressions.
+Expression Trees: Represent mathematical expressions in a tree-like structure.
+Trie (Prefix Tree): Used to store a dynamic set of strings with each node representing a common prefix.
+These types of trees are often used in algorithm design and analysis for various purposes, such as searching, sorting, and organizing data efficiently.
+
+
+Can we draw a binary search tree for the following list of values?
+
+10
+15
+25
+40
+60
+80
+
+the binary search tree looks like a linear data structure.
+the advantage of the binary search tree is lost here, because,
+	what is the advantage of any binary search tree?
+		when we search any element, the worst case, the number of comparison is equal to the height 			of the tree. 
+		But since the height of the tree is equal to length of the list.
+
+	its worst case is equal to linear search algorithm
+
+A tree is at its best only when the height is minimum
+
+For 6 elements, the height of the tree is 6. Is very poor.
+After rotations, the height of the tree is maintain at 3.
+a height balance tree, should be in such a way that
+any node should contain left and right totally the difference is -1 or 0 or 1
+
+Hashing
+------------
+Key
+	an object can have many attributes. One of the attributes is taken as the key
+	like primary key in a table, every row has many values, but one of them is key value.
+
+Hashing function
+	one algorithm is required to find the offset (relative memory) based on the key.
+	it can be anything like modulo or division or taking a portion of the key etc.
+
+Hash Table
+	hash table must have atleast 2 columns
+	key - offset
+
+
+km	=	24%7	=	3
+
+
+1214989
+
+coleased chaining
+	all keys, whose hash value is same
+	are maintained as a linked list
+
+	so we find the bucket and start searching on that linked list.
+
+Activity:
+	Identify
+		Hashing
+		Collision
+		Re hashing
+
+other collision processing techniques.
+
+
+print the elements of an arraylist in reverse order
+
+if you write a loop to move from 1st to last
+and then print from last to first.
+
+This is the poorest approach, because, to
+print from last to first, why we need to move from 1st to last?
+
+--------------------------------
+Stack
+Queue
+	are disciplined linked list
+
+Stack is a linked list, which allows adding and removing elements are only one end, called as Top
+But 	we can create Stack and Queue using array also.
+
+----------------------------------------------------------------
+Prepare for MCQ on algorithms and datastructures
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
