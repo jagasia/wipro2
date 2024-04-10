@@ -659,6 +659,26 @@ But 	we can create Stack and Queue using array also.
 ----------------------------------------------------------------
 Prepare for MCQ on algorithms and datastructures
 
+Algorithms
+Flowcharts
+Pseudo codes
+
+all these 3 dimensions surround on
+Searching
+	linear
+	binary
+	hashing
+Sorting
+	bubble
+	selection
+	insertion
+	merge		fast		less time complexity
+	quick
+	heap sort
+Hashing
+	collision
+	addressing the collision issue
+
 
 
 
