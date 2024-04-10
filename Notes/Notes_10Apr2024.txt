@@ -1,0 +1,244 @@
+10-Apr-2024	Wednesday	Day #2
+Logical Operators: AND, OR, NOT, XOR			
+-----------------------------------------------
+what is XOR?
+	Returns TRUE only if both are not SAME
+	TRUE XOR FALSE	=	TRUE
+	FALSE XOR TRUE	=	TRUE
+	TRUE XOR TRUE	=	FALSE
+	FALSE XOR FALSE	=	FALSE
+
+What is a fibonacci series?
+	Addition of 1st 2 numbers becomes the 3rd number and repeat the same
+
+x
+y
+x+y
+y+(x+y)
+(x+y)+y+(x+y)
+
+what is the first number in fibonacci?
+	0
+next number is
+	1
+
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+
+PRINT X
+PRINT Y
+X=Y
+Y=X+Y
+
+X=0
+Y=1
+Z=X+Y
+
+X=Y
+Y=Z
+
+To make this algorithm/ flowchart as finite, we ask user to decide
+	Fibonacci series until which number?
+		then you need to check if the series number is > than input then exit
+	or
+	Fibonacci series of how many numbers?
+		then you need a counter.
+
+Task:
+www.lucidchart.com
+Intelligent Diagramming | Lucidchart
+
+Sign up to lucid chart (if not already).
+login to Lucid chart and 
+Draw a flow chart for bubble sort algorithm.
+
+Draw a flow chart for insertion sort algorithm.
+--------------------------------
+Searching algorithms:
+--------------------------------
+
+is
+data[i] = item
+?
+
+Linear search:
+	start searching from the first element
+	and continue to search until
+		the search item is found
+		or
+		the end of the list is reached
+
+I give you time to complete these flow charts:
+
+1) Fibonacci series flow chart
+2) Bubble sort flow chart
+3) Insertion sort flow chart
+4) Linear search flow chart
+
+----------------------------------------------
+Binary search.
+We have already discussed this in previous session.
+
+Task:
+
+Now, we have to draw flowchart for binary search
+in lucid chart.
+
+----------------------------------
+Whenever an algorithm uses recursion,
+i would recommend to find another algorithm that solve the same problem WITHOUT USING Recursion.
+Why I dont like recursion?
+	stack overlow
+
+Suppose, I ask you the route to reach a place.
+	now a days we use google map.
+	if we dont have that facility, we will ask someone to help us with the route.
+	that person says like this:
+		to some extent, we will be able to grasp the route. But there is a limitation.
+		all together, we cannot remember
+		but when it comes to google map, we feel comfortable. WHY?
+			because, the google map, tells you only one instruction at a time.
+			in 600 meters, take left
+			in 400 meters, take sharp right
+			now, take U turn
+		like this, it is telling one by one.
+
+that is the difference between recursion and non recursion (loop)
+
+recursion, push to stack
+non recursion, is like queue (not even queue. queue also can store so many instructions in itself)
+	one instruction -> you follow then remove that instruction from the queue
+	
+
+Lets take the example of Binary Search tree:
+	how do we traverse a binary tree?
+		Traverse means, visiting every node of the tree.
+	3 traversal techniques:
+		in order
+		pre order
+		post order
+
+In Order:
+	left 
+	root
+	right
+
+Pre Order:
+	root
+	left
+	right
+
+Post Order
+	left
+	right
+	root
+
+All these are done using recursion:
+-----------------------------------------------
+push the nodes to the stack until we reach the leaf node
+once we reach the leaf node, we start poping the nodes and display them
+
+
+
+1 as left
+left root right
+
+final output:
+1
+3
+4
+6
+7
+8
+10
+13
+14
+
+in order traversal visits the binary search tree nodes 
+in ascending order.
+
+inorder(left)
+inorder(root)
+inorder(right)
+
+preorder(root)
+preorder(left)
+preorder(right)
+
+postorder(left)
+postorder(right)
+postorder(root)
+
+
+Recursion is making the algorithm worst when the height of the tree is huge.
+Stack overflow. Because, the root nodes are pushed to stack until the leaf node is reached.
+
+So, how can we avoid recursion while 
+traversing a binary search tree?
+
+Without recursion, how to traverse a binary search tree?
+	we need to do some change in the binary search tree.
+	in that case, the name of the tree will become "Threaded binary search tree"
+
+Threaded binary search tree:
+	every node, contains reference to its in order successor
+
+Node in a tree:
+	LEFT
+	RIGHT
+	VALUE
+	INORDERSUCCESSOR
+
+
+
+Factorial
+-------------
+	factorial of 100
+
+		range of a variable
+
+		long
+Finding factorial of a number without using recursion
+
+input n
+set factorial=1
+for loop from n to 1	step -1
+	factorial *= n
+
+this will be sufficient
+
+Task:
+I want to list the sorting algorithms
+and their order of growth in Big O notation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
