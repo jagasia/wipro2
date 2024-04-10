@@ -403,3 +403,120 @@ Rehashing
 Bucket hashing
 these concepts are algo & ds concepts to learn in hashing chapter.
 
+-------------------------------------------------------------------
+Advanced Sorting and Searching			
+Merge Sort, Quick Sort, and Heap Sort: Concepts and Pseudocode			
+
+Merge sort:
+----------------
+	What is Merge sort?
+		best sorting algorith
+
+
+
+merge
+	we should divide the list into multiple sorted list.
+
+51
+40
+30
+25
+45
+61
+54
+70
+33
+59
+
+this is a list of random numbers.
+Sorting this list using merge sort.
+
+there are 10 elements in this list.
+if you split this into 10 sub lists.
+Then each sub list will contain, 1 element.
+Now, i call, all my sub lists contain sorted manner.
+
+now, merge the sub lists. So that 10 sub lists become 5 sub lists.
+
+40
+51
+
+25
+30
+
+45
+61
+
+54
+70
+
+33
+59
+
+can you say, we have 5 sub lists and all are in sorted manner
+
+25
+30
+40
+51
+
+33
+45
+54
+59
+61
+70
+
+
+now, we have 3 sub lists, in sorted manner
+
+25
+30
+33
+40
+51
+45
+54
+59
+61
+70
+
+finally, we have sorted the large list
+
+divide-and-conquer approach is used to sort this.
+
+1,2,3,55,45,78,79,80
+
+1,2,3,45,55,78,79,80
+
+Efficiency of merge sort algorithm is
+very high, when the list is almost already sorted.
+
+
+Complexity Analysis of Merge Sort:
+Time Complexity:
+
+Best Case: O(n log n), When the array is already sorted or nearly sorted.
+Average Case: O(n log n), When the array is randomly ordered.
+Worst Case: O(n log n), When the array is sorted in reverse order.
+Space Complexity: O(n), Additional space is required for the temporary array used during merging.
+
+Advantages of Merge Sort:
+Stability: Merge sort is a stable sorting algorithm, which means it maintains the relative order of equal elements in the input array.
+Guaranteed worst-case performance: Merge sort has a worst-case time complexity of O(N logN), which means it performs well even on large datasets.
+Simple to implement: The divide-and-conquer approach is straightforward.
+Disadvantage of Merge Sort:
+Space complexity: Merge sort requires additional memory to store the merged sub-arrays during the sorting process. 
+Not in-place: Merge sort is not an in-place sorting algorithm, which means it requires additional memory to store the sorted data. This can be a disadvantage in applications where memory usage is a concern.
+----------------------------------------------------------------
+Quick Sort
+---------------
+Task:
+	Identify what is quick sort
+	how it is implemented
+	and also its Order or growth,
+	advantages and disadvantages.
+
+
+
+
