@@ -1404,6 +1404,69 @@ Total runs scored by boundaries = 4*3 + 8*6 = 60
 Therefore, runs scored by running between the wickets = 110 - 60 = 50
 Percentage scored by running =(50/110)*100 =  45.45 
 
+-------------------------------------
+//how to display only 2 digits precison?
+		
+1) round approach
+	Math.round()	which will always return int
+
+	multiply by 100, then 
+	Math.round
+	then divide by 100
+
+45.454544
+	45.454544*100		=	4545.4544
+	Math.round(4545.4544)	=	4545.0
+	4545.0/100			=	45.45
+
+2) String.format("%.2f",x);		returns a String 	with 2 digits precision
+	then convert String to float	Float.parseFloat
+
+3) DecimalFormat
+	try this in your free time.
+
+		percentage*=100;
+		percentage=Math.round(percentage);
+		percentage/=100;
+		System.out.println(percentage);
+		
+		
+		String per=String.format("%.2f", percentage);
+		percentage=Float.parseFloat(per);
+		System.out.println(percentage);
+
+---------------------------------
+Profit Share
+Ramu, Gopu and Samu are three friends who own a fruit shop. All three have invested certain amount for starting the shop. They share the profit proportionate to the ratio of the shares they have invested. Given the Profit amount and the ratio of shares of Ramu,Gopu and Samu ,write a program to find the amount of profit that will go to Ramu, Gopu and Samu.
+
+Input Format:
+First line is an integer that denotes the Profit Amount.
+Second line consists of 3 Space separated integers that denote the ratio values of Ramu,Gopu,Samu respectively
+
+Output Format:
+A double value that denotes the Ramu's profit amount.
+A double value that denotes the  Gopu's profit amount.
+A double value that denotes the  Samu's profit amount.
+[Note : The output values are rounded off to 2 decimal places]
+
+Sample Input 1:
+10000
+2 4 4
+
+Sample Output 1:
+2000.00
+4000.00
+4000.00
+
+Sample Input 2:
+25000
+4 5 6
+
+Sample Output 2:
+6666.67
+8333.33
+10000.00 
+
 
 
 
