@@ -434,51 +434,744 @@ Data types:
 ---------------
 List out all data types in java
 
+IMO, data types in java means PRIMITIVE data types.
+all others are just TYPEs. not Data Types.
+
+there are only 8 primitive data types in java:
+boolean		1 bit
+byte		1 byte
+short		2 bytes
+char		2 bytes
+int		4 bytes
+float		4 bytes
+long		8 bytes
+double		8 bytes
+
+
+
+integer family:
+byte
+short
+int
+long
+
+floating point family:
+float
+double
+
+char
+boolean
+
+
+
+char datatype of java uses "Unicode" character set
+ASCII is a character set
+	1 byte representation of any character.
+		in 1 byte, the range is 256 possible values		ascii value 0 to 255
+
+But in java, every character is represented in 2 bytes	unicode format
+	65536 possible values in 2 byte representation
+
+if you use first 1 byte of unicode, then it is	UTF-8		Unicode Text Format 8 bit/ 1 byte representation
+
+We can find the range of any datatype in java coding itself.
+
+
+
+
+public class App {
+
+	public static void main(String[] args) {
+		System.out.println(Byte.MAX_VALUE);
+		System.out.println(Short.MAX_VALUE);
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Long.MAX_VALUE);
+		System.out.println(Float.MAX_VALUE);
+		System.out.println(Double.MAX_VALUE);
+	}
+
+}
+
+
+127
+32767
+2147483647				(10 digit)
+9223372036854775807			(19 digit)
+3.4028235E38
+1.7976931348623157E308
+￿
+
+
+public class App {
+
+	public static void main(String[] args) {
+		byte marks=127;
+		marks++;
+		System.out.println(marks); //you expect 128. But we got -128
+		//what will be the output?	-128
+		//	the range of byte is 	-128 to 127
+		// and it is circular.	
+	}
+
+}
+
+output: -128
+
+
+suppose, 
+int has a range	-2147483648 to 2147483647
+
+suppose, if we are not aware of this 
+a person deposits money.
+earlier his balance is
+	2147483647
+
+now he deposits 1000 rupees
+
+and then later he goes to withdraw money. But his a/c is in negative balance.
+VERY DANGEROUS.
+
+ ■²→☺☻
+F
+♦
+
+
+class Employee
+{
+	int mobileNo;		//1234567890		WORKS
+				//9876543210		NOT WORK
+}
+
+
+String mobileNo;		//use regular expression to validate
+
+declare some variables of each primitive data type
+and assign some values
+and check output of these values are same or not
+
+
+number system:
+
+
+
+public class App3 {
+
+	public static void main(String[] args) {
+		int i=010;
+		System.out.println(i);
+	}
+
+}
+
+
+
+Octal:
+	range of octal is between
+		0 and 7
+
+0
+1
+2
+3
+4
+5
+6
+7		after 7, it becomes 			10
+10		means 8 in decimal
+11		means 9 in decimal
+12		10
+13		11
+14		12
+15		13
+16		14
+17		15
+20		16
+
+
+in java a number prefixed with "0" means, it is an octal number.
+in java a number prefixed with "0x" means, it is a hexadecimal number.
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+A	10
+B	11
+C	12
+D	13
+E	14
+F	15
+
+
+public class App4 {
+
+	public static void main(String[] args) {
+		int i=0x10;	//0x prefix means, it is hexa decimal
+		System.out.println(i);
+	}
+
+}
+
+Tell me, how many wrapper classes are there in java language?
+8 wrapper classes.
+
+For every primitive type, a corresponding wrapper class is available
+
+boolean 		Boolean
+char		Character
+byte		Byte
+short		Short
+int		Integer
+long		Long
+float		Float
+double		Double
+
+
+I used these wrappers to find the
+	MIN_VALUE
+	MAX_VALUE
+
+etc.
+
+Primitive data types are value types.
+means,
+	the variable of primitive type
+	can contain only value.
+	it cannot contain
+		reference
+		methods
+
+So, all related methods can be found in
+corresponding wrapper classes.
+
+
+For example,
+	char is a datatype.
+
+i want to check if it contains a number or not.
+
+
+
+public class App5 {
+
+	public static void main(String[] args) {
+		char c='_';	//		\0 means null
+//		System.out.println(c.isLetter());  //NOT POSSIBLE
+	
+		System.out.println(Character.isDigit(c));
+		System.out.println(Character.isLetter(c));
+		System.out.println(Character.isAlphabetic(c));
+	}
+
+}
+
+
+
+Wrappers
+	are reference type version of primitives
+	they are Classes
+	we can create object of wrapper classes.
+
+jdk 1.5 onwards,
+	boxing and unboxing happens automatically.
+
+
+int i=20;
+Integer marks=100;
+i=marks;		//auto unboxing
+
+marks=i;		//auto boxing
+
+What is boxing?
+	primtive to object
+	is wrapping a primitive inside an object
+
+
+
+class Integer
+{
+	int  i;
+}
+//can we see the above as WRAPPING int inside a class/object.
+
+Gift boxing = git wrapping
+
+by doing that, it becomes reference type.
+
+void swap(int i, int j)
+{
+	int temp=i;
+	i=j;
+	j=temp;
+}
+
+i and j are swapped.
+
+but
+swap(a,b);		// here we call swap method using actual paramters a and b
+a and b are not swapped.
+
+because,
+	int is a value type.
+	hence, swap(a,b)		passes value of a & b to i and j
+
+	when i & j are swapped, 	a & b are unaffected.
+
+swap(Integer i, Integer j)		????	Surprisingly, the values are copied. Because of auto unboxing
+
+class MyInt
+{
+	int no;
+}
+
+public class App6 {
+
+	public static void swap(MyInt i, MyInt j)
+	{
+		MyInt temp=new MyInt();
+		temp.no=i.no;
+		i.no=j.no;
+		j.no=temp.no;
+		System.out.printf("i=%d\tj=%d\n",i.no,j.no);
+	}
+	
+	public static void main(String[] args) {
+		MyInt a=new MyInt();
+		a.no=20;
+		MyInt b=new MyInt();
+		b.no=30;
+		swap(a,b);
+		System.out.printf("a=%d\tb=%d",a.no,b.no);
+	}
+
+}
+
+
+problem:
+------------
+	swap(int i, int j)		i and j are formal parameters
+
+calling this method
+	swap(a,b)			when i and j are swapped, a and b are not affected.
+
+problem was because, int is a primitive type. So values are copied.
+
+	swap(MyInt i, MyInt j)
+	swap(a,b)			a and b are reference types
+
+object of any class is a reference type.	So, reference of a and b are copied to i and j.
+	so there are not 4 objects now.		a and b are objects and 	i and j are pointer to them.
+		there are only 2 objects
+
+	when i and j are swapped, 	a and b are affected.
+
+
+
+class MyInt
+{
+	int no;
+}
+
+public class App6 {
+
+/*
+void swap(int i, int j)
+{
+	int temp=i;
+	i=j;
+	j=temp;
+}
+*/
+
+	public static void swap(MyInt i, MyInt j)
+	{
+		MyInt temp=new MyInt();
+		temp.no=i.no;
+		i.no=j.no;
+		j.no=temp.no;
+		System.out.printf("i=%d\tj=%d\n",i.no,j.no);
+	}
+	
+	public static void main(String[] args) {
+		MyInt a=new MyInt();
+		a.no=20;
+		MyInt b=new MyInt();
+		b.no=30;
+		swap(a,b);
+		System.out.printf("a=%d\tb=%d",a.no,b.no);
+	}
+
+}
+
+----------------------------------------
+Operators:
+	most of you already know
+	+ is used to add 
+
+arithmetic operators:
+Comparison / Relational operators:
+Assignment operators:
+Logical operators:
+Ternary operator:
+Shift operators:
+operators:
+
+
+some operators are		(in terms of number of operands)
+	unary
+	binary
+	ternary
+
+
+Task:
+Identify the list of operators in java and their purpose.
+------------------------------
+BODMAS
+	always apply
+apart from that there are so many operators in java
+
+()
+[]
+·
+++
+--
+++
+--
++
+-
+!
+~
+(type)
+*
+/
+%
++
+-
+<<
+>>
+>>>
+<
+<=
+>
+>=
+instanceof
+==
+!=
+&
+^
+|
+&&
+||
+? :
+=
++=
+-=
+*=
+/=
+%=
+
+
+()
+int ex=(2+3)*4/2-5;
+this is normal bracket to group operations and precide.
+
+[]
+	for arrays
+
+.
+	is used to access the members of an object
+
+	obj.method();
+	obj.var=20;
+
+++
+--
+	
+		int i=20;
+		i++;
+		System.out.println(i); 		//what is the output?
+
+i++		will increment
+++i		will increment
+
+the difference between
+	prefix and postfix is only when this operator is combined with others in an expression.
+ex:
+	i++;
+	++i;	
+		works same
+	but
+	
+	j=i++;	//assignment first and increment next
+
+	j=++i;	//increment first and then assignment next
+
+	3*i++;	//since ++ is postfix, it will increment only after multiply by 3 is completed
+
+
+casting:
+	when i assign a value
+	x=y;
+	if x and y are same data type or type, then absolutely no issues.
+	issues arise when x and y are different (data) types.
+
+	in certain scenarios, it is possible to 
+		cast
+		convert them
+
+you need to understand, when to cast and when to convert.
+
+between numeric types, you can cast.
+between co-variant types, you can cast.
+	what is co-variant type?
+		types under same inheritance hierarchy
+		super class and sub class are co-variant types.
+
+between different categories,
+	ex:
+		numeric to String
+		String to numeric
+	we can convert
+		conversion functions are there in corresponding wrapper classes.
+
+	int i=Integer.parseInt("100");
+
+
+	implicit casting happens when the target of assignment is wider than the source.
+
+x=y
+	target is x
+	source is y
+
+int score=20;
+long marks=i;		//target is wider (long). source is narrow(int). So implicit casting.
+
+		int score=20;
+		long marks=score;		//implict casting
+		score=(int) marks;		//explicit casting
+		
+
+		marks=1234567890;
+		score=(short) marks;	//loss of precision
+		System.out.println(score);
+
+
+int i=15;
+		System.out.println((float)i/2);
+		
+
+System.out.println(i/2.0f);
+either of the operands of / is float, 
+the result is also float.
+
+How i convert a number  into String?
+	String str=i+"";
+
++ operator do addition, if both operands are numbers
++ operator do concatenation, if either operand is String
+
+
+		String x="2";
+		String y="3";
+		System.out.println(x+y);		//23
+
+
+%
+	perform a division and return the reminder
+
+	when you want a number within a range from 0 to n-1
+	x%n	
+		returns a number between 0 and n-1
+
+<< shift operator.
+if you convert the operand as binary digitis
+2 is the operand
+binary of 2 is	00000010
+left shift it by 1	00000100		=> 4
+
+every left shift is equivalent to 		multiply by 2
+every right shift is equivalent to 		divide by 2
+
+4:
+00000100		>>1	
+00000010		is equivalent to 2
+
+
+example:
+		int a=4;
+		System.out.println(a>>1);		//2
+		
+		a=2;
+		System.out.println(a<<1);		//4
+
+--------------------------------------
+<
+<=
+>
+>=
+!=
+==
+
+difference between = and ==
+	= is used to assign
+	== is used to check if both operands are equal or not.
+
+== operator is overloaded.
+	a==b
+		what happens?
+			if a and b are primitive (value) types, then their values are compared.
+			if a and b are reference (object) types, then their references are compared.
+
+
+
+String class,
+Wrapper classes are peculiar when it comes to ==
+because, the wrappers automatically unwrap / unbox 
+
+
+	Integer i=new Integer(20);
+	Integer j=new Integer(20);		
+	System.out.println(i==j);		//false
+
+	int i = 20;
+	int j = 20;
+	System.out.println(i == j);	//true
+
+		String str1=new String("Hello");
+		String str2=new String("Hello");
+		System.out.println(str1==str2);		//false
+
+		String str1="hello";
+		String str2="hello";
+		String str3=str2;		//you would agree that str2 and str3 referes to same memory
+		System.out.println(str1==str2);		//true
+
+
+		String str1="hello";
+		String str2="hello";
+		System.out.println(str1.equals(str2));		//true
+
+whenever you want to check if 2 strings are equal or not,
+		better use equals() method
+		and not the == operator
+
+equals method cannot be used for primitives. Primitives does not have member functions.
+equals method must be used when comparing the values of 2 objects
+
+instanceof operator
+ex:
+	a instanceof b
+		returns true if a is an instance of b
+		or is instance of its sub class
+
+		String str="raja";
+		System.out.println(str instanceof Object);
+
+
+System.out.println(true ^ false);		//XOR operator
 
 
 
 
 
+		int a=60;
+		System.out.println((a>50)?"Pass":"Fail");		//ternary operator
 
 
-..
+a=20;
+a+=1;		//		a=a+1
+a-=2		//		a=a-2
+a/=2		//		a=a/2
+
+-----------------------------------------
+How to get input from user?
+	Scanner class of java.util package is used to get input from the user in cmd / console
+Scanner sc=new Scanner(System.in);
+		
+Scanner offers lot of methods
+	next()		returns a String input upto any delimiter
+			a delimiter can be <<carriage return>> (enter key) (new line) space or tab space etc
+	nextLine()		returns a String input upto new line enter
+	nextInt		returns int 
+	nextFloat
+	nextLong
+	nextDouble
+	
+
+Dice Game I
+
+Each player will be allowed to throw  a dice 2 times. The points for each player will be calculated as follows :
+If the values thrown are different, the points scored is equal to the sum of the 2 values.
+If the values thrown are the same, the points scored is equal to double the sum of the 2 values.
+
+Write a program to calculate the points scored by a player.
+
+Input and Output Format:
+
+Input consists of 2 integers. The valid range of inputs is from 0 to 6. [ Both 0 and 6 inclusive]
+Output the points scored. In case of invalid inputs, print “Invalid Input”.
+
+Refer sample input and output for formatting specificaions.
+
+[All text in bold corresponds to input and the rest corresponds to output.]
+Sample Input and Output 1:
+
+Enter Value 1:
+5
+Enter Value 2:
+6
+The points scored is 11
+
+Sample Input and Output 2:
+
+Enter Value 1:
+5
+Enter Value 2:
+5
+The points scored is  20
+
+Sample Input and Output 3:
+
+Enter Value 1:
+8
+Enter Value 2:
+6
+Invalid Input 
 
 
+import java.util.Scanner;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+public class App {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Value 1:");
+		int value1=sc.nextInt();
+		System.out.println("Enter Value 2:");
+		int value2=sc.nextInt();
+		if(value1<0 ||value1>6 ||value2<0 ||value2>6)
+		{
+			System.out.println("Invalid Input");
+			System.exit(0);
+		}
+		
+		//program continues, if value1 and value2 are valid
+		int result=value1+value2;
+		
+		if(value1==value2)
+		{
+			result*=2;
+		}
+		
+		System.out.println("The points scored is "+result);
+	}
+}
+--------------------------------------------
 
 
 
