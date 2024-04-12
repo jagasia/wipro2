@@ -1,0 +1,336 @@
+Java Environment Setup
+
+wipro
+ust
+empower
+adp	
+	in all these companies,
+	they provide official laptop
+	in that laptop	they have a software centre application
+	in that s/w centre, they provide all the necessary software.
+		from there we install those softwares in our official laptop
+
+	installations need admin permission 	(OS admin password)
+
+-----------------------------
+What is Java?
+	During 1990s, when c++ was in prime, a team in Sun Microsystems wanted to develop a new language, based on C, C++ and address the issues which were found in those 2 languages.
+They used almost the same syntax of C, C++
+some of the issues in those languages:
+	not Platform Independent
+	Pointer
+	Memory Leaks
+	Multiple Inheritance
+	no Garbage collection
+	and so on
+
+They named it as Oak	(name of a tree)
+then changed to Java		(name of coffee)
+
+logo of java looks like a cup of coffee.
+	
+
+Java
+	as a technology
+	as a platform		
+	as a language
+
+we learn java as a language.
+
+since this is a high level language (close to human)
+
+we need a translater that converts/ translates java language to machine language.
+
+when we discuss about compilation in java.
+
+C, C++ were not platform independent.	(means, when i compile a c program in 16 bit machine, i cannot run it in 32 bit machine).
+
+what happens when we compile a c / c++ program?
+	c language code is translated into machine language code.	(binary)
+	the problem is machine language is different for different type of machines.
+	when i say machine, i mean microprocessor (which is inside the CPU).
+	 µp can be 16 bit, 32 bit 64 bit and hence the operating systems now a days 64 bit
+	64-bit operating system, x64-based processor
+
+	binary / machine language is different
+
+what is the ascii value of A
+	A	=	65
+	
+when i say A in C lanugage, how it is translated into machine language
+
+	A	=	0100 0001				8 bit
+			0000 0000 0100 0001			16 bit
+			0000 0000 0000 0000 0000 0000 0100 0001	32 bit
+
+AB		=	0100 0001 0100 0010
+			0000 0000 0100 0001 0000 0000 0100 0010
+
+If i read information in 8 bit, it is different from how i read in 16 bit
+
+i write in 16 bit
+and i read in 32 bit	then it is found corrupted
+
+a program compiled in 32 bit machine
+cannot be executed in 64 bit machine
+
+turbo C
+gcc
+
+in windows, C language supports conio.h	which is not supported in linux
+
+C, C++ languages itself different for different platforms.
+
+How can we address this issue?
+	we want to compile java program only once, but it should run in different platforms without any issue.
+	how?
+	
+
+Does java run in any platform?
+	No
+	Wherever JVM is there, it will run.
+	Can anyone tell me, what are the platforms that support executing java?
+		Linux		(android, Ubuntu, RedHat, etc)
+		MacOS
+		Windows
+
+For a layman, Byte code and machine language are same.
+
+The compilation process in java, is split into 2 stages.
+
+Java -> English	(intermediate language)
+
+English -> Telugu
+English -> Tamil
+English -> Hindi
+Kannada
+Malayalam
+
+Stage 1:	(java compiler)
+	java -> byte code		(instead of machine language)
+	this byte code is an intermediate one
+
+Stage 2:	(jre JIT compiler)		Just In Time
+at run time, 
+	byte code -> machine language code (this happens in the machine where we run)
+	and execute the code.
+
+
+Java language is same for 
+	Linux
+	Windows
+	MacOS
+
+write once
+run in devices which has any of these OS and irrespective of 16 or 32 or 64 bit?
+	at runtime only, it will compile to machine language and run there itself.
+
+JDK vs JRE
+----------------
+	JDK	=	Java Development Kit
+	JRE	=	Java Runtime Environment
+
+JDK
+	is for programmer
+	to compile java code
+	also has JRE
+
+JRE
+	is for running the compiled java class
+
+
+JRE is used to run. Cannot compile.
+JDK has both java.exe and javac.exe
+
+javac is for compilation
+
+What is a Java Virtual Machine?
+	as the name suggests, it is virtual machine. Not physically found in folders.
+	JVM is a process.		What is a process? in Task manager, you can see the processes running in a computer.
+	JVM process
+		has lot threads
+			class loaders
+			garbage collector
+
+JDK, JVM, JRE
+
+If i need to install Java in our computer?
+	JDK or JRE?
+	We will install JDK in our system. Because, we need compiler also.
+
+Step1:
+	search for "download java 17" in google.
+	choose oracle official website from the search list
+	choose 17 version of java
+	download installer
+
+	once download is completed,
+	copy/ move the file to "softwares" folder
+
+	double click the installer and follow the steps.
+
+Step 2:
+	create the necessary environment variables:
+	1) in start menu, type environment variables
+		system env var
+		your account env var
+			better choose your account env var
+
+	2) create an env var
+		JAVA_HOME
+		C:\Program Files\Java\jdk-17
+
+	3) in "Path" env var
+		append the following
+			%JAVA_HOME%\bin
+
+Step 3:
+	cmd
+		java -version
+
+java version "17.0.10" 2024-01-16 LTS
+Java(TM) SE Runtime Environment (build 17.0.10+11-LTS-240)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.10+11-LTS-240, mixed mode, sharing)
+
+-----------------------------------------------
+Learning to write a java code in a text editor
+and then compile and execute in cmd prompt
+is something we need to do now.
+
+Later, we will move to using IDE like
+	Eclipse
+	Spring Tool Suite
+
+---------------------------
+Create a folder for this training purpose
+in your system.
+inside "training" folder
+create a "java" folder
+	Lets create all our java codes inside this folder.
+
+Lets create our first java program:
+	1) start menu, type "Notepad"
+	2) save the file as
+		"App.java"
+
+
+in java, we cannot run a program without a class
+
+public class App
+{
+	public static void main(String []args)
+	{
+		System.out.println("Hello world");
+	}
+}
+
+
+go to cmd prompt where App.java is present
+
+compile:
+	javac App.java
+run:
+	java App
+
+
+Task:
+Write a java program using notepad
+Save and use cmd prompt to compile
+and execute the program
+check the output.
+
+Demo:
+Accept a command line argument and display
+
+public class App
+{
+	public static void main(String []args)
+	{		
+		System.out.println("Hello "+args[0]);
+	}
+}
+
+Task:
+Accept n number of command line arguments, separated by space.
+Display all the command line arguments using any loop.
+
+Hint:
+	every array has length property
+		args.length will give you, the number of arguments provided by the user.
+
+
+public class App
+{
+	public static void main(String []args)
+	{		
+		System.out.print("Hello ");
+		for(String arg : args)
+		{
+			System.out.print(arg+" ");
+		}
+	}
+}
+-----------------------------------------------
+The java class name must be starting with capital letter
+hence the file name also same.
+----------------------------------------------
+Configuring IDEs (Eclipse, IntelliJ IDEA)
+
+I recommend 
+	Eclipse (or) STS	Spring Tool Suite
+
+
+for core java (Java SE) we just need
+	Eclipse for Java developer
+
+but for you to continue learning advanced java (Java EE)
+	you can download
+		Eclipse for Java EE developer
+
+Download Links
+Windows 32-bit | x86_64
+
+choose x86_64
+
+if you download Spring Tool Suite
+then it will allow you to create "Spring boot" projects from File menu itself.
+
+there are 2 types of downloads in eclipse/sts
+
+one is installer.
+	that you download and install
+another is package.
+	that you download and unzip.
+	once unzip, you got a folder
+		that folder contains	eclipse or sts exe
+
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-03/R/eclipse-jee-2024-03-R-win32-x86_64.zip
+
+
+When we run eclipse,
+it asks us to choose the workspace.
+
+Workspace is a folder
+	where all our projects are created.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
