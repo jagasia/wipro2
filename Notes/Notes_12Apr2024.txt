@@ -304,7 +304,12 @@ another is package.
 	once unzip, you got a folder
 		that folder contains	eclipse or sts exe
 
+eclipse ee package:
 https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-03/R/eclipse-jee-2024-03-R-win32-x86_64.zip
+
+sts:
+https://spring.io/tools
+
 
 
 When we run eclipse,
@@ -312,6 +317,64 @@ it asks us to choose the workspace.
 
 Workspace is a folder
 	where all our projects are created.
+
+-----------------------------------
+Lets create a new 
+	Java Project in eclipse
+
+File -> New -> Java Project
+	untick "create module-info.java" file
+
+	1) Project name
+		12-apr-1
+	2) Use default location
+		it will choose "workspace" location
+	now, the project folder is created inside our workspace
+
+you can see the following folders inside the project folder:
+	src
+	bin
+
+src folder contains all the source code files
+bin folder contains all the class files
+
+Lets create an App.java file
+	right click project -> New -> Class
+		name of the class "App"
+	tick the checkbox for "public static void main"
+
+	click Finish button
+
+Now, we got the class.
+	write necessary code
+
+
+public class App {
+
+	public static void main(String[] args) {
+		System.out.println("Hello world");
+	}
+
+}
+
+
+right click the code
+	run as -> Java Application
+
+
+Look at the output in "Console" window.
+
+Window menu -> show view -> Console
+--------------------------------------------------
+Task:
+Create a java project in eclipse
+add some System.out.println inside the main method
+
+run the code
+check the output in console.
+
+
+
 
 
 
