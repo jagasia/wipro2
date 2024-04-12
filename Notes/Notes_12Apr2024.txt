@@ -373,6 +373,97 @@ add some System.out.println inside the main method
 run the code
 check the output in console.
 
+-----------------------------------------
+Conventions used in Java	(guidelines)
+
+class name:
+	Follow PascalCase
+		first letter of every word to be upper case.
+		ex:
+			Employee
+			ContractEmployee
+			ArrayIndexOutOfBoundsException
+	should be a noun
+		a java class name must be a noun. It cannot be a verb
+			
+method name:
+	Follow camelCase
+		very first letter is in lower case. Every next word first letter is in upper case.
+		ex:
+			acceptDetails
+			calculateSimpleInterest
+
+	should be a combination of verb and noun
+			doThis	format
+	
+variables / object names:
+		almost same as method convention but does not follow 	verb+noun at all
+	
+		ContractEmployee rajaSivaKumar;		the first letter is small.
+		RetailCustomer sureshPeter;
+		StringBuilder stringBuilder;
+		Employee employee;
+
+		employee.something();			employee is class or object?? ans: Object
+							because, "e" is small
+
+		variables must be noun.
+		but index variables used in for loops can be shorter like 	i,j,k,etc
+		otherwise, it must be meaningful.
+
+constants:
+		must be in full capitals.
+		ex:
+			final int TOTAL=100;
+			final float AVERAGE_SCORE=12.2f;
+
+
+		in C, C++ const is used. in Java, final is used.
+
+
+operators:
+		full small letters.
+		ex:
+			new
+			instanceof
+
+---------------------------------------
+Hi All - Please click on the link and fill feedback - https://survey.zohopublic.com/zs/BLClpG
+---------------------------------------
+Data types:
+---------------
+List out all data types in java
+
+
+
+
+
+
+
+
+..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
