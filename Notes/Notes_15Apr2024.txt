@@ -1,0 +1,380 @@
+15-Apr-2024
+----------------
+Java Environment Setup
+Installing JDK
+Configuring IDEs (Eclipse, IntelliJ IDEA)
+Java Syntax and Basic Constructs
+Primitive Data Types and Variables
+Operators and their Precedence
+Control Flow Statements (if, switch, loops - for, while, do-while)
+
+Arrays in Java
+------------------
+What is an array?
+	Group of data, single (data) type
+	Sequential manner
+	Collection of similar data elements
+	Array is a collection of homogeneous data structure allocating  memory consecutively
+
+Question:
+	Can we store different type of data in an array?
+		I said Yes (!!!!!!). 
+Question:
+	How?
+		I said, if we declare an array of "Object" type, then we can store any type of data in that array.
+		
+		Object []arr=new Object[10];
+		arr[0]="Raja";
+		arr[1]=20;		//auto boxed to Integer type
+		arr[2]=1.2f;
+		arr[3]=1.2;
+		arr[4]=new Date();
+		
+	Observation:
+		DOES THIS PROVE THAT WE CAN STORE ANY TYPE OF DATA IN AN ARRAY?
+		NO......
+		We are actually storing only 1 type here.................	Object type.
+
+		automatically cast to Object type, because, Object is the super class for any class.
+
+Many people wrongly assume that Collections are heterogenous. NO.	They are also homogeneous.
+Unfair comparison happened between Collections and Arrays.
+
+	ArrayList al=new ArrayList();
+	al.add("Raja");
+	al.add(new Integer(20));
+	al.add(new Float(1.2f));
+	
+If array list can be object type, then 
+array also can be object type.
+
+So any collection / array in any language is Homegenous only.
+Hetergenous structures
+	c language 	Structure
+cannot be considered as collection
+and cannot be compared with arrays.
+
+Arrays vs Collections
+----------------------------
+Arrays can be primitive types or reference types.
+Collections can be reference types only. Wrappers are allowed instead of primitives
+
+int arr[]=new int[10];		//this is a primitive type array.
+
+
+Why collections cannot be primitive?
+	Because each node, should contain, not only the value, but also reference to next node.
+	a primitive can contain only value. 
+
+Multiple variables with same name (but different index).
+
+I want to store 20 country names in a variable.
+countries[20]
+
+Arrays have advantages:
+	Direct access to any element using their index.
+	Multiple values using same array name.
+	Searching, sorting can be done on arrays when compared to individual variables.
+	
+India
+Australia
+Sri lanka
+Japan
+China
+	countries is the name of the array.
+	instead of having 5 variables, i have only 1 variable name
+
+countries[0]	refers to India
+
+	
+Arrays have disadvantages:
+	Consecutive memory location is required.
+	Insertion and Deletion requires shifting adjacent elements.
+	Array is fixed in size.	Deletion does not mean, memory becomes free.
+	Array size cannot be changed, once created.
+
+If you have 5 variables instead of an array of 5 elements,
+we cannot use loop to access these elements.
+
+If you are good in arrays in C, C++,
+then you need to re-learn arrays again in java.
+Syntax is itself different.
+
+int C, C++:
+	int arr[10];			//[] are always in right side of array name DURING DECLARATION
+
+in C#:
+	int []arr;			//[] are always in left side of array name DURING DECLARATION
+in Java:
+	int arr[]=new int[10];		
+	int []arr=new int[10];
+				//[] can be left or right side of array name
+
+
+
+int arr[];		//declaration.	we do declaration to decide the scope of the variable.
+arr=new int[10];	//heap memory is allocated. Actually an array is created now only. Its reference is stored in the stack variable arr.
+
+
+in java, you can create array of variable length.
+
+int n=100;
+int arr[n];		//is it possible in C language?
+
+in Java, we can do that.
+
+int n=100;			//you can get input from the user and then create an array of that size
+int arr[]=new int[n];
+
+
+Arrays can be of any number of dimension in java.
+single dimensional array
+	int arr[]=new int[n];
+multiple dimensions in java array, can be Jagged.
+
+what is jagged array?
+	Jagged means uneven.
+	
+if you consider a 2 dimensional array as 
+	rows and columns
+
+each row can have different length of columns in the array.
+
+int arr[][]=new int[10][10];		//evenly created array. 		10 rows * 10 columns
+
+int arr[][]=new int[5][];
+arr[0]=new int[10];			//1st row has 10 columns
+arr[1]=new int[8];			//2nd row has 8 columns
+arr[2]=new int[12];			//3rd row has 12 columns
+
+
+Task:
+import java.util.Arrays;
+
+public class App5 {
+	public static void main(String[] args) {
+		int arr[][]= {
+				{1,2,3},
+				{11,22,33,44,55},
+				{100,200},
+				{1000,2000,3000,4000}
+		};
+		
+//		System.out.println(Arrays.deepToString(arr));
+		//how do we loop this array?
+		
+	}
+}
+
+
+Write a for loop / nested for loop to display all the elements of this arr
+
+Control Flow Statements (if, switch, loops - for, while, do-while)
+
+1) for loop
+2) for each loop	/ 	enchanced for loop		(jdk 1.5 onwards)
+	works with arrays and collections
+
+while loop
+	while(condition)
+	{
+		//code that should repeat
+	}
+
+if you do not use {} then first line after while will be part of while loop
+
+	while(true);		//a semi column makes the while loop does not have a body
+
+do while
+	executes at least once and then checks the condition at the bottom of the loop.
+	suitable where we need to check whether to repeat or not.
+---------------------------
+How to access each digit of a number?
+1) using modulo 10 and div by 10
+if you module a number by 10, you get last digit.
+123%10		returns 3
+123/10		returns 12
+
+another approach:
+i convert this number into String
+i can access every character of a String using		charAt(index)
+for(int i=0;i<str.length;i++)
+{
+	char c=str.charAt(i)		//gives me 1 character at a time. 	Each char can be converted into int		
+	//if you cast char to int, you will get ascii value.	-48	will give you the number. Why?		ascii of 0 is 48
+
+}
+---------------------------------------------------------------
+Task:
+Lucky Prize IV
+ 
+In all the theatres in the Amphi Multiplex, prizes will be given to few lucky winners every day.
+The lucky winners will be decided based on the ticket number and the criteria set for that day.
+ 
+The criteria set for day 4 is that prizes will be given to all ticket holders whose ticket number satisy both the conditions given below :
+1.	The ticket number is a palindrome
+2.	The sum of the digits in the ticket number is even
+ 
+Given a ticket number, write a program to determine whether that ticket holder will be a lucky prize winner or not.
+ 
+Input and Output Format:
+ 
+Input consists of an integer that corresponds to the ticket number.
+Output consists of a string that is either “Winner” or “Not a winner”
+ 
+Sample Input 1:
+525
+ 
+Sample Output 1:
+Winner
+ 
+Sample Input 2:
+7896
+ 
+Sample Output 2:
+Not a winner
+
+-----------------
+input is an int
+//convert int to String....
+String str=String.valueOf(i);
+String s=""+i;		
+
+Integer.parseInt(str);		//String to int
+Integer.valueOf(str);		//String to Integer	
+
+-------------------------------------------------------
+Solution:
+-----------
+import java.util.Scanner;
+
+public class App {
+
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int ticketNo=sc.nextInt();
+		
+		//get the String version of ticketNo
+//		String str=String.valueOf(ticketNo);
+		if(isPalindrome(ticketNo) && isEvenSum(ticketNo))
+		{
+			System.out.println("Winner");
+		}else
+		{
+			System.out.println("Not a winner");
+		}
+		
+	}
+	
+	private static boolean isEvenSum(int ticketNo)
+	{
+		//% and / approach
+		int temp=ticketNo;
+		int digitSum=0;
+		while(temp>0)
+		{
+			int digit=temp%10;
+			digitSum+=digit;
+			temp/=10;
+		}
+		return (digitSum%2==0);
+			
+	}
+
+	private static boolean isPalindrome(int ticketNo) {
+		String str=ticketNo+"";
+		//How to get reverse of a String? StringBuilder/ StringBuffer
+		StringBuilder sb=new StringBuilder();
+		sb.append(str);
+		sb.reverse();
+		String reverseStr=sb.toString();
+		return str.equals(reverseStr);
+	}
+
+}
+---------------------------------------------------
+Brute Force approach
+	use all possible iterations from the beginning
+
+Finding the largest number in an array.
+
+public class App6Largest {
+	public static void main(String[] args) {
+		int arr[]= {121,22,13,214,515,65,1257,88,98};
+//		to find largest number in an array
+		int max=0;
+		for(int element : arr)
+		{
+			if(element>max)
+			{
+				max=element;
+			}
+		}
+		
+		System.out.println(max);
+	}
+}
+
+-----------------------------------
+another approach:
+import java.util.Arrays;
+
+public class App6Largest {
+	public static void main(String[] args) {
+		int arr[]= {121,22,13,214,515,65,1257,88,98};
+		
+		Arrays.sort(arr);
+		int max=arr[arr.length-1];
+		System.out.println(max);
+	}
+}
+
+---------------------------------------------------------
+121,22,13,214,515,65,1257,88,98
+
+maximum consecutive elements are even numbers?
+----------------------
+Task:
+-------
+Run Length IV
+ 
+Write a program to find the length of the longest running sequence of even numbers in the given array. Also find the starting index of the longest running sequence of even numbers.
+ 
+Example :
+ 
+Consider the array ... { 2, 16, 15, 2, 6, 8, 10, 7, 22, 4 , 6}
+ 
+The 3 even number sequences in this array are {2, 16}, {2, 6, 8, 10} and {22, 4, 6}.
+The longest running even number sequence is {2, 6, 8, 10}
+The length of the longest running even number sequence is 4 and the starting index is 3.
+ 
+Note:
+The array indexing starts from 0.
+If there are multiple choices, select the choice where the starting index is minimum.
+ 
+Input and Output Format:
+ 
+The first line of the input consists of an integer n that corresponds to the number of elements in the array. The next 'n' lines of input consists of a single integer that correspond to the elements in the array.
+ 
+The first line of the output consists of the length of the longest running even number sequence and the second line of the output consists of the starting index of the longest running even number sequence.
+ 
+Sample Input :
+11
+2
+16
+15
+2
+6
+8
+10
+7
+22
+4
+6
+ 
+Sample Output :
+4
+3
+ 
+
