@@ -1,3 +1,7 @@
+12:30
+14:30
+once these sessions are over, leave a message in chat window.
+
 15-Apr-2024
 ----------------
 Java Environment Setup
@@ -377,4 +381,383 @@ Sample Output :
 4
 3
  
+-----------
+Solution:
+-----------
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt(); //no. of elements in array
+		int arr[]=new int[n];
+		//get n inputs
+		for(int i=0;i<n;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		
+		int count=0;
+		int maxCount=0;
+		int startIndex=-1;
+		int maxStartIndex=-1;
+		for(int i=0;i<n;i++)
+		{
+			if(arr[i]%2==0)
+			{
+				count++;
+				if(count==1)
+				{
+					//is a beginning
+					startIndex=i;
+				}
+				//check if count> maxCount, if yes, then update maxCount
+				if(count>maxCount)
+				{
+					maxCount=count;
+					maxStartIndex=startIndex;
+				}
+//				System.out.printf("element=%d, count=%d, maxCount=%d, startIndex=%d\n",arr[i], count, maxCount, startIndex);
+			}else
+			{
+				count=0;
+			}
+		}
+		
+		System.out.println(maxCount);
+		System.out.println(maxStartIndex);
+	}
+
+}
+
+--------------------------------------
+Task:
+Maximum Product
+Playing with arrays has become a hobby for Arun. This time Arun wants to find the greatest number in the array such that it is the product of any two numbers in the array.
+Write a program to help Arun to the do the task. If no such number exists, then print -1.
+[Note: The two number that are used to find the product can be the number itself.  For example, if the array elements are [1,2,3] , then 1*3 = 3 will be the solution for this array.]
+
+Input Format :
+First input is an integer value that denotes the size of the array.
+Second input is a series of integers separated by space that denotes the array values.
+
+Output Format :
+Output is an  integer that denotes the maximum product.
+
+Sample Input 1:
+5
+35 30 7 6 5
+Sample Output 1:
+35
+
+Sample Input 2:
+5
+2 4 6 89 78
+Sample Output 2:
+-1
+
+Sample Input 3:
+5
+45 85 14 2 7
+Sample Output: 3:
+14
+
+-----------
+Solution:
+--------------
+import java.util.Scanner;
+
+public class App {
+
+	public static boolean containsNumber(int arr[],int num)
+	{
+		boolean isFound=false;
+		for(int x : arr)
+		{
+			if(x==num)
+			{
+				isFound=true;
+				break;
+			}
+		}
+		return isFound;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		//--------------------
+		//get all possible combination of product
+		int maxProduct=-1;
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=i+1;j<arr.length;j++)
+			{
+//				System.out.printf("i=%d\tj=%d\n",i,j);
+				int product=arr[i]*arr[j];
+				//check if this product is found as an element in the array
+				if(containsNumber(arr, product))
+				{
+					if(product>maxProduct)
+					{
+						maxProduct=product;
+					}
+				}
+			}
+		}
+		
+		System.out.println(maxProduct);
+	}
+
+}
+
+--------------------------------------------------------
+Each of you will be provided with git credentials.
+	Git Lab
+username
+email
+password	(you will change the password)
+
+You are doing lot of assignments every day, every hour.
+Lot of programs you are doing now.
+
+We need to push them to the Git repository, using the git credentials they provide.
+
+I will guide you to create a repository and pushing your first file to the git. Later,
+You should be continuing.
+
+In cloud, 
+	CHOOSE 1 FOLDER that contains all your assignments
+	THIS FOLDER will be sync to Git repository.
+
+-------------------------------------------------------------------------------
+What is a slice?
+	cutting the portion of an array
+	Extract a portion of an array from an index to an index.
+
+	
+manually
+Arrays method
+
+	start 0
+	end 5
+	how many elements will be there?	6 elements		5-0+1
+
+	start 5
+	end 10
+	how many elements will be there?	6 elements		10-5+1
+
+
+	end-start+1
+
+
+Demo:
+import java.util.Arrays;
+
+public class App7Slice {
+	public static int[] slice(int []array, int start, int end)
+	{
+		int []result=new int[end-start+1];
+		for(int i=0,j=start;i<result.length;i++,j++)
+		{
+			result[i]=array[j];
+		}
+		return result;
+	}
+	public static void main(String[] args) {
+		int arr[]= {1,2,3,4,5,6,7,8,9,10};
+		
+		int[] result = slice(arr,3,6);
+		System.out.println(Arrays.toString(result));
+		
+	}
+}
+
+-------------------------------------------------------------------------
+Arrays class provides a method to slice an array.
+	Arrays.copyOfRange(array,start,end);
+
+import java.util.Arrays;
+
+public class App8Slice2 {
+
+	public static void main(String[] args) {
+		int arr[]= {1,2,3,4,5,6,7,8,9,10};
+		int[] result = Arrays.copyOfRange(arr, 3, 6);
+		System.out.println(Arrays.toString(result));
+	}
+
+}
+
+
+
+  Open Declaration   int[] java.util.Arrays.copyOfRange(int[] original, int from, int to)
+
+
+Copies the specified range of the specified array into a new array.The initial index of the range (from) must lie between zeroand original.length, inclusive. The value at original[from] is placed into the initial element of the copy(unless from == original.length or from == to).Values from subsequent elements in the original array are placed intosubsequent elements in the copy. The final index of the range(to), which must be greater than or equal to from,may be greater than original.length, in which case 0 is placed in all elements of the copy whose index isgreater than or equal to original.length - from. The lengthof the returned array will be to - from.
+Parameters:original the array from which a range is to be copiedfrom the initial index of the range to be copied, inclusiveto the final index of the range to be copied, exclusive.(This index may lie outside the array.)Returns:a new array containing the specified range from the original array,truncated or padded with zeros to obtain the required lengthThrows:ArrayIndexOutOfBoundsException - if from < 0or from > original.lengthIllegalArgumentException - if from > toNullPointerException - if original is nullSince:1.6
+
+----------------------------------
+How do you get the reverse of an array?
+
+manually:
+	loop from index length-1 to 0
+	and copy the elements
+
+import java.util.Arrays;
+
+public class App9Reverse {
+	public static int[] reverse(int []input)
+	{
+		int rev[]=new int[input.length];
+		for(int i=0,j=input.length-1;j>=0;j--,i++)
+		{
+			rev[i]=input[j];
+		}
+		return rev;
+	}
+	public static void main(String[] args) {
+		int arr[]= {100,12,31,24,52,86,78,48,9};
+		//reverse is not descending. it is reverse of the original order
+		
+		int[] result = reverse(arr);
+		System.out.println(Arrays.toString(result));
+		
+	}
+}
+
+
+-------------------------------
+How to use java method to reverse an array?
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class App10Reverse {
+
+	public static void main(String[] args) {
+		Integer arr[]= {9, 48, 78, 86, 52, 24, 31, 12, 100};
+		List<Integer> list = Arrays.asList(arr);
+		Collections.reverse(list);
+		list.toArray(arr);
+		System.out.println(Arrays.toString(arr));
+	}
+
+}
+---------------------------------------------------
+N-smallest Elements
+
+Shreya was attending a coding competition and she was progressing good . Suddenly she got stuck in a problem where she needs to find the n-smallest elements in an array . Given an array of integers of size N and n value as inputs , Write a program to help Shreya find the first - n smallest elements from the array but they must be in the same order as they are in given array.
+
+Input Format :
+First input is an integer that denotes the size of the array, N.
+Second line consists of series of integers seperated by a space that denotes the array values.
+Third input is an integer that denotes the n value.
+
+Output Format:
+Output is a series of integers seperated by a space that denotes the n smallest elements.
+
+Sample Input 1:
+5
+4 8 2 5 9
+3
+
+Sample Output 1:
+4 2 5
+
+Sample Input 2:
+10
+7 3 8 11 55 22 1 6 13 2
+5
+
+Sample Output 2:
+7 3 1 6 2 
+
+Hint:
+Clone the input array as "temp"
+Sort it.
+Create an array called "min"
+copy n elements from the left side of temp to "min".
+
+Now, traver the original array from left to end.
+	if current element is found  in "min" array, then print.
+
+
+Solution:
+-------------
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Integer size=sc.nextInt();
+		Integer arr[]=new Integer[size];
+		for(Integer i=0;i<size;i++)
+		{
+			arr[i]=sc.nextInt();
+		}	
+		Integer n=sc.nextInt();
+			
+		
+		Integer []temp=Arrays.copyOfRange(arr, 0, size);
+		
+		Arrays.sort(temp);
+		
+		Integer smallest[]=Arrays.copyOfRange(temp, 0, n);
+		
+		List<Integer> inputs = Arrays.asList(smallest);
+		boolean isFirst=true;
+		for(Integer element : arr)
+		{
+			if(inputs.contains(element))
+			{
+				if(!isFirst)
+					System.out.print(" ");
+				System.out.print(element);
+				isFirst=false;
+			}
+		}
+		
+	}
+
+}
+
+
+---------------------------
+5		side length of the city.	The city is always SQUARE.	5 * 5 = 25 places where tower can be fixed. 
+3		no of towers.		these 3 towers locations are need.	x1, y1	x2, y2	x3, y3
+2 2		t1	x,y
+0 1		t2	x,y
+4 1 		t3	x,y
+
+first, put some number ex: 1 on these locations of the city array
+
+for the above input, sideLength is 5 means,
+city[5][5]
+
+1 1 1 0 0
+1 1 1 1 0
+0 1 1 1 0
+1 1 1 1 0
+1 1 1 0 0
+
+count the 0s and print the count
+8
+
+if count>0
+No
+
+
+
 
