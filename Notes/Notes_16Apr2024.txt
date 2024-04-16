@@ -437,3 +437,596 @@ public class AppRegex2 {
 		}
 
 ----------------------------------------------
+https://github.com/jagasia/wipro2/blob/jag/Java/Regex1.docx
+	download this file and start doing this handson now.
+
+University - Requirement 3
+Requirement 3:
+   In this requirement, you need to validate the website and the mobile number of the note.
+
+a)Create a Class Main with the following static methods:
+Method Website	Description
+static Boolean validateWebsite(String website)	Validate the website based on the rules given below. Returns true ifwebsite is valid else return false
+static Boolean validateMobile(String mobileNo)	Validate the mobile number based on the rules given below. Returnstrue if mobileNo is valid else returnfalse
+
+b) While validating website follow the below rules,
+   
+http://www.iit.edu.in
+iit - domain name
+edu - sTLD
+in - ccTLD
+
+1. The website should start http:// or https:// protocol
+2. The website may or may not contain " www." after the protocol.
+3. The domain name should contain only alphabets, either uppercase or lowercase and should not contain any special characters.
+4. sTLD (sponsored top-level domain) should contain 2 to 6 characters
+5. ccTLD(country code top-level domain) may or may not be present in a website and it should contain 2 to 6 characters
+
+c) While validating mobile number follow the below rules,
+
+1.The mobile number should have prefix as " +91 "(international calling code).
+2.The mobile number should have 10 numbers [0-9].
+
+Note: Print "Website is valid" if website is valid else print "Website is invalid". Print "Mobile number is valid" if mobile number is valid else print "Mobile number is invalid".
+            All the above print statements are present in the main method.
+
+Menu:
+1.Validate Website
+2.Validate Mobile number
+
+Sample Input and Output 1:
+
+1.Validate Website
+2.Validate Mobile number
+Enter your choice:
+1
+Enter the Website to be validated:
+https://caspercollege.edu.in
+Website is valid
+
+Sample Input and Output 2:
+
+1.Validate Website
+2.Validate Mobile number
+Enter your choice:
+1
+Enter the Website to be validated:
+https://www.iit_m.ac.in
+Website is invalid
+
+Sample Input and Output 3:
+
+1.Validate Website
+2.Validate Mobile number
+Enter your choice:
+2
+Enter the Mobile no. to be validated:
++919876543210
+Mobile number is valid
+
+Sample Input and Output 4:
+
+1.Validate Website
+2.Validate Mobile number
+Enter your choice:
+2
+Enter the Mobile no. to be validated:
++9987643210
+Mobile number is invalid
+
+
+Solution:
+-----------
+import java.util.Scanner;
+
+public class Main {
+
+	static Boolean validateWebsite(String website)
+	{
+		String exp="http(s)?://(www[.])?[A-Za-z]+([.]{1}[a-z]{2,6}?){1,2}";
+		return website.matches(exp);
+	}
+	static Boolean validateMobile(String mobileNo)
+	{
+		String exp="[+]91\\d{10}";
+		return mobileNo.matches(exp);
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("1.Validate Website\r\n"
+				+ "2.Validate Mobile number\r\n"
+				+ "Enter your choice:\r\n"
+				+ "");
+		
+		int choice=sc.nextInt();
+		switch(choice)
+		{
+		case 1:
+			System.out.println("Enter the Website to be validated:");
+			String website=sc.nextLine();
+			if(website.equals(""))
+				website=sc.nextLine();
+			if(validateWebsite(website))
+			{
+				System.out.println("Website is valid");
+			}else
+			{
+				System.out.println("Website is invalid");
+			}
+			break;
+		case 2:
+			System.out.println("Enter the Mobile no. to be validated:");
+			String mobileNo=sc.nextLine();
+			if(mobileNo.equals(""))
+				mobileNo=sc.nextLine();
+			if(validateMobile(mobileNo))
+			{
+				System.out.println("Mobile number is valid");
+			}
+			else
+			{
+				System.out.println("Mobile number is invalid");
+			}
+			break;			
+		}
+		
+	}
+
+}
+-----------------------------------------------
+String Manipulation: Methods in the String Class
+
+Activity:
+	Identify as many methods available in String class.
+		length()		returns the length of the string
+		substring()	returns the portion of the string. Identify how the indices works.
+				first index is 0 ordinal, second index is 1 ordinal
+		indexOf()
+		charAt()
+		equals()
+		equalsIgnoreCase()
+		compareTo
+		compareToIgnoreCase()
+		concat()
+		contains()
+		startsWith()	returns true if the prefix is matching
+		endsWith()	returns true if the suffix is matching	
+		indexOf()		returns -1 if that char is not found
+		matches()
+		split()		accepts a delimiter and splits the String to String [] after splitting.
+
+
+
+StringBuilder and StringBuffer
+-----------------------------------------
+Both of these classes have the same set of methods.
+Whatever methods present in StringBuilder are also present in StringBuffer
+
+Then what is the difference between these 2 classes?
+	StringBuffer is synchronized
+	that is the only difference.
+
+Synchronized means,
+	when multiple threads try to access an object at a time,
+	only 1 thread is allowed to access at a time. Other threads are made to wait until the thread completes access.
+	then one by one the threads are allowed.
+
+asynchronous means, parallel or concurrent or simultaneously
+
+synchronized means, one by one
+
+
+
+Reminder
+	Threads
+	Multi Threading
+	Synchronization
+
+Reminder
+	Date
+----------------------
+If you learn StringBuilder, then you have learned StringBuffer also.
+
+One of the important method of StringBuilder that help us is
+	reverse method.
+
+this reverse method is not found in String class.
+
+What is something found in String class but not in StringBuilder
+	is 
+		matches() method for regex\
+
+Task:
+Accept a String input from the user, and check if it is a Palindrome or not.
+Hint:
+	user StringBuilder
+
+A palindrome is a String which is same in its reverse also.
+ex:
+	malayalam
+	madam
+	mam
+	mom
+	dad
+
+
+import java.util.Scanner;
+
+public class AppPalindrome {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		//trim will remove only prefix and suffix spaces. Not in between
+		input.replaceAll(" ", "");
+		StringBuilder sb=new StringBuilder(input);
+//		sb.append(input);
+		sb.reverse();
+		String reverse=sb.toString();
+		if(input.equalsIgnoreCase(reverse))
+		{
+			System.out.println("Palindrome");
+		}else
+		{
+			System.out.println("Not palindrome");
+		}
+	}
+
+}
+
+
+Anagram?
+	What is anagram?
+		Anagram are words that are made of same set of characters.
+	Ex:
+		tea
+		eat
+
+		meat
+		team
+
+Algorithm:
+--------------
+Get input string 1
+Get input string 2
+	sort the characters of string 1
+	sort the characters of string 2
+	check if both are same
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class AppAnagrams {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String input1=sc.next();
+		String input2=sc.next();
+		
+		char[] arr1 = input1.toCharArray();
+		Arrays.sort(arr1);
+		String str1=new String(arr1);
+		
+		char[] arr2 = input2.toCharArray();
+		Arrays.sort(arr2);
+		String str2=new String(arr2);
+		
+		if(str1.equalsIgnoreCase(str2))
+		{
+			System.out.println("Anagram");
+		}else
+		{
+			System.out.println("Not anagram");
+		}
+	}
+}
+
+--------------------------------------------------------------------
+Some operations you need to learn to do in StringBuilder
+	replace characters
+	delete characters at index
+	insert characters at index
+	find and replace characters
+	append
+	trimToSize
+
+---------------------------------
+Task:
+--------
+Character at Index
+
+Somu has an excellent visualization skill using which he answers any logical and arithmetic calculation by mind calculation. To test his skill, Ramu gave him the following question. Given a String, s, and an integer, i, find the character present at the given index, i, when the string is repeatedly concatenated.
+Write a program to  help Somu.
+
+Input Format:
+First line of the input is the string, s. Assume max length of the string is 50.
+Second line is an Integer that denotes the index value, i.
+Output Format:
+Output is a character present at ith index.
+Note:
+Print "Invalid" if the index is negative.
+
+Sample Input 1:
+Amphibian
+25
+Sample Output 1:
+a
+
+Sample Input 2:
+Java
+-1
+Sample Output 2:
+Invalid 
+Explanation for Sample1:
+input String is "Amphibian".
+After repeated concatenation, the string becomes "AmphibianAmphibianAmphibianAmphibian......"
+The character at 25 th index is 'a'. 
+
+
+If the index is larger than the String length, that is where we face problem.
+
+abcde			length = 5
+index=5		problem		5 should be considered as 0
+index=4		no problem	at index 4, "e" is found
+index=6		problem		6 should be considered as 1
+
+5 mod 5	=	0
+6 mod 5	=	1
+
+length % 5 will give the final index.
+
+25 % 9 = 	7
+
+Amphibian index 7 is a
+we got it.
+
+----------------------------------------------------
+Date:
+	java.sql package contains
+		Date
+
+	java.util package contains 
+		Date
+
+	java.time package contains
+		LocalDate
+		LocalTime
+
+
+What is Date?
+	Date is a class that contains
+		properties
+		methods
+
+the constructor of java.util.Date
+	is used to create an object of Date that contains current system date and time.
+
+java.util.Date
+-------------------
+	every second that is ticking now, 
+	is represented as a Long number.
+	long data type.
+
+	import java.util.Date;
+
+public class App5Date {
+
+	public static void main(String[] args) {
+		Date dt=new Date();
+		System.out.println(dt);
+	}
+
+}
+
+Tue Apr 16 14:28:40 IST 2024
+
+
+System.out.println(dt.getTime());
+1713257960249
+	this is the current time in milli seconds.
+
+if the above number represents current time, then if you go in reverse
+this number would have been 0 at some point of time			Thu Jan 01 05:30:00 IST 1970
+
+and further if you go back, then it will become negative number
+and that number also must end at some negative because,		1900
+long has a range in negative also.
+
+Convert a String into Date.		Because user input is in String format
+				Scanner does not have nextDate() method at all.
+
+SimpleDateFormat			java.text package
+Convert a String into Date		
+Convert a Date into String		in a specific format
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+public class App5Date {
+
+	public static void main(String[] args) throws ParseException {
+		Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+		Date dt=sdf.parse(input);
+		System.out.println(dt);
+	}
+
+}
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+public class App5Date {
+
+	public static void main(String[] args) throws ParseException {
+		Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+		sdf.setLenient(false);
+		Date dt=sdf.parse(input);
+		System.out.println(dt);
+	}
+
+}
+
+
+//what is the purpose of setLenient(false);
+SimpleDateFormat is usually in lenient method. It considers 32/12/2023 as 01/01/2024. So we modify the lenient property to false to get error in case of invalid date.
+
+Convert a Date into String		in a specific format
+		format method
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+public class App5Date {
+
+	public static void main(String[] args) throws ParseException {
+		Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+		sdf.setLenient(false);
+		Date dt=sdf.parse(input);
+		System.out.println(sdf.format(dt));
+	}
+
+}
+
+
+dd		date
+MM		month
+MMM		month in 3 letter format	ex:	Apr
+MMMM		month in full			April
+mm		minute
+hh		hour
+HH		24 hour format
+EEE		weekday in three letter format
+EEEE		weekday in full
+E		weekday in 1 letter
+yy		year in 2 letter
+yyyy		full year
+
+Task:
+Accept a date as input from the user in dd-MMM-yyyy
+Display the week day of that date.
+Ex:
+	16-Apr-2024
+output:	Tuesday
+
+-------------------------------------------------
+How do you get a character input from user?
+	Scanner does not have	nextChar	or nextCharacter		NO such method.
+
+	sc.next().charAt(0);			//to get 1 character input
+
+-------------------------
+Task:
+Last Character
+Rahul was tired after studying for so long , so he thought to play a small game with the words from his book . He opens a random page and selects a random word from it , and also  chooses the last digit of that page number n . Given an array of characters,Write a program to help Rahul find the last character that occurs n(last digit of the page number) times in the array . If no such character exists,then print -1.
+Input Format:
+First input is an integer that denotes the size of the array.
+Second line consists of  series of characters  seperated by a space that denotes the array values.
+Third input is an integer that denotes the n value.
+Output Format:
+Output is a character that denotes the last character which occurs n times.
+
+Sample Input 1:
+8
+a a b c n s d n
+2
+
+Sample Output 1:
+n
+
+Explanation:
+    In the given array 'a' and 'n' occurs 2 times which is equal to the n value . Even though 'a' occurs twice ,'n' is the one that occurs last.    
+    
+Sample Input 2:
+5
+a b c d e
+3
+
+Sample Output 2:
+-1 
+------------------------------------
+Solution:
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		char []arr=new char[n];
+		for(int i=0;i<n;i++)
+		{
+			arr[i]=sc.next().charAt(0);
+		}
+		
+		int maxCount=1;
+		char maxCountChar='\0';
+		for(int i=0;i<n-1;i++)
+		{
+			int count=1;
+			for(int j=i+1;j<n;j++)
+			{
+//				System.out.printf("i=%c,j=%c\n",arr[i],arr[j]);
+				if(arr[i]==arr[j])
+				{
+					count++;
+					if(count>=maxCount)
+					{
+						maxCount=count;
+						maxCountChar=arr[i];
+					}
+				}
+			}
+//			System.out.printf("%c is found %d times\n",arr[i],count);
+		}
+//		
+		if(maxCount>1)
+		{
+			System.out.println(maxCountChar);
+		}else
+		{
+			System.out.println(-1);
+		}
+	}
+
+}
+
+-------------------------------------------
+Task:
+Masked Numbers
+
+Vignesh was a mischievous boy and due to his rude behaviour at class , his teacher gave him an assignment as punishment and told him to complete it within one day . His assignment was to find the masked numbers . A masked number is a string that consists of digits and one X that should be replaced by exactly one digit.Given a string  N as input  ,Write a program to help Vignesh find all the possible solutions to replace the X with a digit so as to get a value that is divisible by Y.If no number is found then print "-1". 
+
+Input format: 
+First input is a string that denotes the string value N (only 3 digits and X will always be in the center). 
+Second input is an integer that denotes the Y value. 
+
+Output format: 
+Output is a series of integers that satisfies the condition seperated by a comma. 
+The integers are displayed sorted in ascending order. 
+If the condition is not satisfied, print "-1" 
+
+Sample Input 1: 
+1X0 
+6 
+Sample Output 1: 
+120,150,180 
+
+Sample Input 2: 
+5X3 
+23 
+Sample Output 2: 
+-1 
