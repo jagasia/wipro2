@@ -1,3 +1,26 @@
+16-Apr-2024
+----------------
+[8:47 am] Unknown User
+Hello Everyone, Good Morning! if you have any issues with Cloud Labs, please ping here or Raise a Help-desk Ticket Visit:
+https://techsupport.rpsconsulting.in/
+
+OR Call At 9921716110 (Ulhas) for Immediate Support                                                                                                       
+
+HAPPY LEARNING! Have a Nice Day😊 RPS Tech Support 
+
+customer support platform
+
+RPS TechSupport
+
+customer support platform
+
+RPS TechSupport
+
+customer support platform
+RPS TechSupport
+customer support platform
+------------------------------------------
+Solution for square and tower problem:
 import java.util.Scanner;
 
 public class App {
@@ -68,3 +91,5 @@ public class App {
 	}
 
 }
+
+---------------------------------------------------
