@@ -369,6 +369,71 @@ symbols
 
 Task:
 --------
+Accept input from the user and extract the employee ID from the input.
+Note:
+	Example for employee id:
+		EMP001
+		EMP123
+		
+Use regex to solve this problem.
 
 
+Task:
+-----------
+Accept input from the user and extract only the date portions found in the input.
 
+date format:
+	dd-MMM-yyyy
+	16-Apr-2024
+
+MMM must be first letter capital and followed by 2 lower case alphabets
+hypen must be there
+yyyy is always 4 digits 	(remind me later for 2/4 digits after the break)
+
+
+Demo:
+--------
+How to check if a String is matching a pattern or not.
+
+Check if the given input is a valid mobile number or not.
+Rules for a mobile number:
+	must be a 10 digit number
+	should not contain anything other than number
+	first digit must be within the range of 6-9
+
+Pattern:
+	[6-9]{1}[0-9]{9}
+
+//String class itself has matches() method
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class AppRegex2 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String mobileNo=sc.nextLine();
+		//String class itself has matches() method
+		if(mobileNo.matches("[6-9]{1}[0-9]{9}"))
+		{
+			System.out.println("Valid");
+		}else
+		{
+			System.out.println("Invalid");
+		}
+	}
+
+}
+
+/*--Another way---------------*/
+		if(Pattern.matches("[6-9]{1}[0-9]{9}", mobileNo))
+		{
+			System.out.println("Valid");
+		}else
+		{
+			System.out.println("Invalid");
+		}
+
+----------------------------------------------
