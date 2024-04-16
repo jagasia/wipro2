@@ -93,3 +93,143 @@ public class App {
 }
 
 ---------------------------------------------------
+Mobile Lock Pattern 
+ 
+Given the coordinates of  a lock pattern configuration, check whether it is a Valid Lock Pattern or not. A valid Lock pattern will be formed only by joining the adjacent neighbours.  If it is a valid lock pattern and if there is 
+       1)   Above 75% coverage, print "Excellent", 
+       2)  Above 50% coverage, print "Good", 
+       3)  Above 25% coverage, print "Average", 
+       4)  Else print "Poor". 
+
+(Coverage need to be calculated with respect to the total grid size) 
+
+        If it is an  invalid lock pattern, print "Invalid". 
+
+Assume that the pattern grid will always be a square. 
+Note: 
+To make the problem less complicated the following relaxations are made: 
+1) The testcases will not contain any overlap through a point in the pattern. 
+2) The pattern will always end at a new point. 
+3) The points given in the testcases always lie within the pattern grid. No need to check if the point is outside the grid. 
+
+
+Input Format: 
+The first line is an integer that corresponds to the side length of the pattern grid. 
+The second line is an integer that corresponds to the number of coordinates in the lock pattern, n. 
+The following n lines have the following pattern : x-coor y-coor 
+
+Output Format: 
+Print "Invalid" if there is the pattern is not properly linked, else print "Excellent " or "Good" or "Average" or "Poor", based on the number of points covered. 
+
+Sample Input 1: 
+3 
+5 
+1 1 
+2 1 
+3 1 
+2 2 
+3 3 
+Sample Output 1: 
+Good 
+
+Sample Input 2: 
+3 
+6 
+1 1 
+2 1 
+3 1 
+2 2 
+3 1 
+3 3 
+Sample Output 2: 
+Invalid
+-----------------------------------------
+Explanation:
+
+Sample Input 1: 
+3 			screen width.		3 * 3	 totally 9 points in the screen
+5 			pattern covers 5 points. 	next 5 inputs are x,y co ordinates
+1 1 	
+2 1 
+3 1 
+2 2 
+3 3 
+Sample Output 1: 
+Good  
+
+What you have to do?
+	check if every consequtive points are adjacent or not.
+
+
+NOTE:
+	All these co ordinates are 1 ordinal.
+
+
+Solution:
+-----------
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int screenWidth=sc.nextInt();
+		int noOfPoints=sc.nextInt();
+		int [][]points=new int[noOfPoints][2];
+		for(int i=0;i<noOfPoints;i++)
+		{
+			points[i][0]=sc.nextInt();
+			points[i][1]=sc.nextInt();
+		}
+		sc.close();
+		
+		//your code here
+		//start from first point, compare with next point.
+		for(int i=0;i<noOfPoints-1;i++)
+		{
+//			System.out.printf("%d,%d compared with %d,%d\n",points[i][0],points[i][1],points[i+1][0],points[i+1][1]);
+			int x1=points[i][0];
+			int y1=points[i][1];
+			
+			int x2=points[i+1][0];
+			int y2=points[i+1][1];
+			
+			//absolute difference between them must be maximum 1
+			if(Math.abs(x1-x2)>1 || Math.abs(y1-y2)>1)
+			{
+				System.out.println("Invalid");
+				System.exit(0);
+			}
+			
+			
+		}
+		//check coverage
+		int coverage=(int) (100*(float)noOfPoints/screenWidth);
+		if(coverage>75)
+		{
+			System.out.println("Excellent");
+		}else if(coverage>50)
+		{
+			System.out.println("Good");
+		}else if(coverage>25)
+		{
+			System.out.println("Average");
+		}
+		else
+		{
+			System.out.println("Poor");
+		}
+		
+		
+	}
+
+}
+---------------------------------------------------------
+String Handling
+String Manipulation: Methods in the String Class
+StringBuilder and StringBuffer: Mutability and Performance
+
+String is peculiar.
+String is not stored in heap. It was stored in Permanent Generation area till jdk 5
+From java 8, String is stored in String pool.
+
