@@ -1030,3 +1030,34 @@ Sample Input 2:
 23 
 Sample Output 2: 
 -1 
+
+Hint:
+	replace X with 0 to 9
+	in each iteration check if the number is divisible by 6 or not
+	if yes, print
+
+	No additional comma at the end or beginning
+--------------------------------
+Task 9: String Operations
+Write a method that takes two strings, concatenates them, reverses the result, and then extracts the middle substring of the given length. Ensure your method handles edge cases, such as an empty string or a substring length larger than the concatenated string.
+
+str1:	raja
+str2:	sivakumar
+reverse:	ramukavisajar
+13/2=6
+6/2=3
+trim 3 from left and 3 from right. Then we will get middle portion
+instead of trimming, we can use substring
+	reverse.substring(3,(3+6));
+middle:	ukavis
+
+------------------------------	
+
+Task 8: Advanced Array Operations
+a)  Implement a method SliceArray that takes an array, a starting index, and an end index, then returns a new array containing the elements from the start to the end index.
+b) Create a recursive function to find the nth element of a Fibonacci sequence and store the first n elements in an array.
+
+private int[] sliceArray(int []arr,int start, int end)
+{
+	//a new array that contains the elements from start and end index of arr
+}
