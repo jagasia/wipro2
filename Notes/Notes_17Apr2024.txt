@@ -470,6 +470,8 @@ public class App {
 
 
 ------------------------------------------------
+Those who have completed handson OOP, can start continuing assignment
+update the status of assignment in chat.
 
 
 
@@ -478,7 +480,541 @@ public class App {
 
 
 
+System.out.printf()
+System.out.format()		//both are same
+above 2 will print the output
+we do not want to print here, but return a formatted string:
+String.format()
+
+all these 3 accepts format specifiers and values
+
+System.out.printf("%d",20);
+System.out.format("%d",20);
+String.format("%d",20);		//returns formatted string
+
+----------------------------------
+Constructor
+---------------
+	What is constructor and why it is needed?
+		constructor is a special method, executed automatically, when we create an object of the class.
+		constructor has same name as the class name
+		constructor does not have a return type	(not even void)
+
+If we do not write any constructor, then
+java compiler creates a default constructor.
+a default constructor does not have arguments.
+
+
+public class Wipro
+{
+	
+}
+
+Wipro w=new Wipro(2);		//not possible. because, compiler creates a 0 arg constructor only by default.
+this is a source code. I am able to see 0 constructors in this code.
+now i do compilation. I will get Wipro.class file after compilation.
+
+lets see the compiled code.
+D:\Jag\Java>javap Wipro.class
+Compiled from "Wipro.java"
+public class Wipro {
+  public Wipro();
+}
+
+D:\Jag\Java>
+
+in the above compiled code, i can see 1 constructor (default) created by java compiler.
+
+OBS:
+	It is observed that, when i created a class Wipro
+	after, compilation, java compiler added a default constructor.
+
+
+----------------
+now i modified my Wipro.java
+
+public class Wipro
+{
+	public Wipro(int i)
+	{}	
+}
+
+in this source code, how many constructors do you see?
+	1 constructor	with argument
+
+after compilation
+javac Wipro.java
+
+in compiled code, how many constructors, will be there?
+	1 only
+
+
+D:\Jag\Java>javac Wipro.java
+
+D:\Jag\Java>javap Wipro.class
+Compiled from "Wipro.java"
+public class Wipro {
+  public Wipro(int);
+}
+
+D:\Jag\Java>
+
+since we created a constructor, the java compiler will not create any constructor.
+
+So, in the above code, there is no default constructor.
+
+Wipro w=new Wipro();		//is not possible for the above class
+Wipro w1=new Wipro(2);		//possible.
+
+
+without constructor, it is impossible to create object of a class.
+
+class Wipro
+{
+	private Wipro()
+	{
+	}
+	
+}
+
+class App
+{
+	public static void main(String []args)
+	{
+		Wipro w=new Wipro();		//is it possible?	NO. Because, constructor is private.
+	}
+}
+
+a) Yes
+b) No
+	
+We can create a singleton class using private constructor.
+What is meant by Singleton?
+	Singleton class does not allow creating new objects of the class.
+	It will have 1 object in itself, which can be obtained using public method.
+
+ex:
+	Runtime
+	GarbageCollector
+
+	Runtime.getRutime();		returns the object of Runtime. It does not create one. it returns the only 1 existing runtime
 
 
 
+public class Company
+{
+	private static Company company;
+	private String name;
+	private Company()
+	{
+		//nobody can create object
+		name="Wipro";
+	}
 
+	public static Company getInstance()
+	{
+		if(company==null)
+		{
+			company=new Company();
+		}
+		return company;
+	}	
+
+	public void setName(String name)
+	{
+		this.name=name;
+	}
+	public String getName()
+	{
+		return this.name;
+	}
+
+}
+
+
+public class App
+{
+	public static void main(String []args)
+	{
+		Company c1=Company.getInstance();
+		c1.setName("Wipro limited");
+		Company c2=Company.getInstance();
+		c2.setName("W");
+		System.out.println(c1.getName());
+	}
+}
+---------------------------------
+Access specifiers:
+public 
+protected
+default
+private
+
+Activity:
+Identify what are these access specifiers
+and difference between these.
+
+
+arrange these access specifiers in the order of low to high access.
+
+public > protected > default > private
+private < default < protected < public
+
+public 
+	accessible from 
+		same class
+		any class within same package
+		any class from other packages
+
+protected
+	accessible from
+		same class
+		any class within same package
+		any sub class of same / different package
+
+default
+	accessible from
+		same class
+		any class within same package
+
+private
+	accessible from
+		same class
+		
+
+These access specifiers used on variables, constants and methods inside a class
+--------------------------------
+a class is public or private or something matters if the
+class is inner class.
+
+a class is public means, the file name must be same as that class name
+
+in a file, there can be only 1 public class
+
+------------------
+Encapsulation: Access Modifiers and Getters/Setters
+
+what is meant by encapsulation?
+	If you visit a showroom to buy a motorcycle. A sales person may know as many information about the vehicle.
+	But may project you the information which are relevant to you. 
+	i) He is hiding other information
+	ii) He is making you focus on essential characteristics
+
+encapsulate means, box or wrap something
+	A class encapsulates, the data members and funcation inside a box
+
+getters and setters looks like guidelines when you do java SE.
+but in java EE, getters and setters are expected by the frameworks.
+
+	int employeeId;		//correct and good in java SE		not rule
+	int EmployeeId;		//in adv java, ex	JpaRepository in spring boot f/w, it will create errors itself. not only good practice.
+
+-------------------------------------------------------------
+PCAT
+3+2	=5
+Java
+	9 upto String
+
+totally 14 is the target
+------------------------------
+
+
+
+a) Given an array of integers, write a program that finds if there are two numbers that add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Optimize the solution for time complexity.
+
+Inheritance: Superclass and Subclass Relationships
+Polymorphism: Method Overloading and Overriding
+----------------------------------
+
+What is inheritance?
+	is process where a class is derived from another class
+	one class aquires another class properties and methods
+
+A sub class inherits super class.
+
+Instead of creating a new class, we derive it from existing class.
+in java, a class extends another class is inheritance
+
+not all the properties are aquired. 
+
+sub class obtains the 
+	public
+	protected
+members of super class.
+	default
+members also, when sub class is in the same package of super class.
+
+private members are not inherited.
+
+Relationships between entities:
+	kind of
+	part of	/	has
+	is a
+
+kind of
+---------
+	a sub class "is a kind of" super class
+ex:
+
+class Shape
+{
+}
+class Rectangle extends Shape
+{
+}
+if you can call "Rectangle" is a kind of "Shape" 
+then do inheritance.
+
+A car has engine. So the relationship between engine and car is "part of" or "has" relationship
+how do you implement this in coding?
+
+class Engine{}
+
+class Car
+{
+	Engine e;
+}
+
+in the above example, if you implement inheritance then it will not be meaningful.
+
+Engine is a kind of Car.	//WRONG
+Car is a kind of Engine.	//WRONG
+Engine is a part of Car.	//CORRECT
+Car has Engine.		//CORRECT
+
+Inheritance must be implemented when "kind of" relationship is found.
+
+
+is a
+-----
+object and class has "is a " relationship
+
+Car is a class
+honda is an object of car
+
+Car honda=new Car();	//honda is a car
+
+is a relationship.
+
+Rectangle box=new Rectangle;
+	box is a rectangle
+	box is a Shape
+
+if you create an object of sub class, then it applies to its super class also.
+
+class Person
+{}
+
+class Student extends Person
+{}
+
+class JavaStudent extends Student
+{}
+
+JavaStudent kumar=new JavaStudent();
+	kumar is a java student
+	kumar is a student
+	kumar is a person
+
+all the hierarchy should match.
+
+Object 
+	is the super class for any class in java.
+
+If i create a class, then its immediate super class is Object
+
+But if I create a class that inherits B then
+B is my immediate class, and Object is the super class of B. 	Provided, if B does not have any super class definition.
+
+abstract class
+final class
+
+Java supports single inheritance.
+that means, a class can have only 1 super class.
+how many sub class? that can be any number
+
+1) Single inheritance
+	a class has only 1 super class
+2) Multiple inheritance
+	a class have more than 1 super class
+3) Multi level inheritance
+	any inheritance is multi level
+	D extends C
+	C extends B
+	B extends A
+4) Hybrid inheritance
+	more than 1 type of inheritance combined.
+
+
+class Shape
+{
+}
+
+class Rectangle extends Shape
+{
+}
+
+class Circle extends Shape
+{
+}
+
+class Triangle extends Shape
+{
+}
+ 
+1: Rectange
+2: Circle
+3: Triangle
+4: Exit
+
+--------------
+Demo:
+
+import java.util.Scanner;
+
+abstract class Shape
+{
+	public abstract String calculateArea();
+	
+}
+
+class Rectangle extends Shape
+{
+	public String calculateArea()
+	{
+		return "l*b";
+	}
+}
+
+class Circle extends Shape
+{
+	public String calculateArea()
+	{
+		return "22/7*r*r";
+	}
+}
+
+class Triangle extends Shape
+{
+	public String calculateArea()
+	{
+		return "1/2*b*";
+	}
+}
+
+public class App {
+
+	public static void main(String[] args) {
+		int  i=1;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Which shape you want to draw?");
+		System.out.println("1: Rectange\n"
+				+ "2: Circle\n"
+				+ "3: Triangle\n"
+				+ "4: Exit");
+		Shape s=null;		//s is not an object. it is a ref var
+		do
+		{
+			int choice=sc.nextInt();
+			switch(choice)
+			{
+			case 1:	//rectangle
+				s=new Rectangle();
+				break;
+			case 2:	//circle
+				s=new Circle();
+				break;
+			case 3:	//triangle
+				s=new Triangle();
+				break;
+			case 4:
+				System.exit(0);
+				break;
+			}
+			System.out.println(s.calculateArea());
+		}while(i==1);
+		
+		
+	}
+
+}
+
+
+what is an abstract method?
+	a method that does not have body.
+	the body/ implementation must be provided by the sub class
+	the sub class is forced to override this method
+
+why do we need abstract method?
+
+what is an abstract class?
+	an abstract class cannot be instantiated
+	instantiate means, creating object
+	we cannot create an object of abstract class
+	an abstract class is meant to be inherited by sub classes.
+in our ex:
+	Shape s;		//what is s?		s is a reference variable of type Shape.	NOT AN OBJECT
+	s=new Shape();	//is not possible because, Shape is an abstract class.
+
+	s=new Triangle();	//is possible, because, Triangle is a sub class of Shape and Triangle is not abstract.
+
+	
+
+
+final class
+-------------
+	is the final in the hierarchy
+	final class cannot be inherited by a class
+
+	all methods in the final class (are like final methods) cannot be overridden. Because, there is no sub class means, where is the overriding?
+
+
+Overriding rules: 	when sub class method name is same as super class method name:
+	the sub class method must be same as the super class method in signature
+		signature means (no of args, type of args, order or args)
+	the sub class method must have same return type as super class method
+	the sub class method cannot be less visible.		
+		if super class method is public, then sub class method must be public
+		if super class method is protected, then sub class method must be protected or public
+		if super class method is default, then sub class method must be default or protected or public
+		if super class method is private, then we cannot override that method
+	the sub class method cannot be declared with throws clause of additional exceptions
+
+Task:
+understand what is overloading and rules.
+If you have any doubts you can ask.
+
+
+
+Scanner sc=new Scanner(System.in);
+
+the object is created when you use new operator.
+sc is the reference variable.	why?	it is of reference type.		Scanner is a reference type.	only primitives are value types. 
+
+
+import java.util.Scanner;
+
+public class App2 {
+
+	public static void main(String[] args) {
+		String input=new Scanner(System.in).next();
+		System.out.println("You entered: "+input);
+	}
+
+}
+
+
+in the above program, i have not stored the scanner object in any reference variable
+
+new Scanner(System.in);		this is object.	but the object reference is not stored in any ref var
+
+Scanner sc;			this is a ref var	but no object is assigned to the ref var
+
+Task 6: Understanding Functions through Arrays
+a) Write a recursive function named SumArray that calculates and returns the sum of elements in an array, demonstarte with example.
+
+
+
+-----------------------
+Assignment
+	keep updating the status in chat once you complete an assignment
