@@ -224,6 +224,85 @@ volatile
 Assignment 2: Flowchart Creation - Design a flowchart that outlines the logic for a user login process. It should include conditional paths for successful and unsuccessful login attempts, and a loop that allows a user three attempts before locking the account.
 
 Assignment 3: Function Design and Modularization - Create a document that describes the design of two modular functions: one that returns the factorial of a number, and another that calculates the nth Fibonacci number. Include pseudocode and a brief explanation of how modularity in programming helps with code reuse and organization."
+------------------------------------------
+OOP
+--------
+While creating a class.
+we create a class for many reasons.
+1) An application/ a program that contains main method.
+2) User defined type.
+	ex:
+		Employee	(id, name, department, salary)
+	so this is a composite type we have created.
+3) Entity class
+	Object Relational Mapping	ORM
+	there is a table in database called EMPLOYEES
+	So every row in the table can be mapped to an object of Employee class.
 
-Start the assignment now.
-	From where you left.
+A class name:
+	should be a noun
+	First letter of the class, and subsequent first letter of ever word must be in Upper case
+	Pascal case
+		Employee
+		JavaStudent
+		RetailCustomer
+	
+A class should not contain public variable.
+the data members must be non-public.
+It is a guideline. Not rule.
+
+Why the data members should not be public?
+	public data members provide unconditional access.
+	So, it is possible that any value will be accepted by the public variables.
+
+a variable cannot restrict the data. To some extent, the data type/ type will enforce some rule.
+	int rollNo;		//it will allow any number in the range of int data type. But beyond that we cannot introduce rules.
+
+But if a method accepts input, then the method is capable of introducing rules.
+
+	public void setRollNo(int rollNo)
+	{
+		//here, executable code is allowed. Means, we can use if condition, switch case etc to validate the data for rollNo
+		this.rollNo=rollNo;
+	}
+
+	public int getRollNo()
+	{
+		//can format the data to the required form
+		return rollNo;
+	}
+
+the above methods are called as
+	setters	/ accessors
+	getters	/ mutators
+
+if a class has non public data members and  provide access using getters and setters then we are doing 
+Abstraction
+and
+Polymorphism
+
+making the variable private or non-public, it is encapsulated 
+providing access through public methods, it provides abstraction.
+
+
+Encapsulation:
+	en means a positive thing
+	encapsulate means, wrap/ box the data inside a type.
+	Boxing
+
+Abstraction:
+	means providing access on essential characteristics
+	public methods.
+
+------------------------------------
+
+
+
+
+
+
+
+
+
+
+
