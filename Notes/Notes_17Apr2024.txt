@@ -1,0 +1,229 @@
+17-Apr-2024
+----------------
+String Handling
+String Manipulation: Methods in the String Class
+StringBuilder and StringBuffer: Mutability and Performance
+Java Object-Oriented Programming (OOP) Basics
+Object-Oriented Programming (OOP)
+Classes and Objects: Definitions and Differences
+Constructors: Purpose and Types
+Encapsulation: Access Modifiers and Getters/Setters
+Inheritance: Superclass and Subclass Relationships
+Polymorphism: Method Overloading and Overriding
+Organizing Code
+Packages: Creating and Using Packages
+Classpath: Understanding and Setting the Classpath
+Java Modules: Modular Programming in Java
+-------------------------------------------------------
+Session on OOP
+Do assignments from PCAT to till date (40 min) a portion
+Session on OOP
+Task related to OOP
+Do assignments from PCAT to till date (40 min) a portion
+Session on OOP
+Task related to OOP
+Do assignments from PCAT to till date (40 min) a portion
+--------------------------------------------
+OOP
+Object Oriented Programming
+---------------------------------------
+	Procedure oriented programming
+		i create functions
+		and use those functions many times
+	
+		then C++ was introduced.
+		C++ is Object oriented.
+
+		
+C++ has classes
+	that boxes	
+		variables and
+		methods
+
+
+in C language, we don't have classes.		global variables
+in C++ we have classes	
+
+in Java, we dont have global variables.	outside the class, we dont have any variables.
+outside the box, there will be some controls given to the user. Properly.
+
+abstraction and encapsulation.
+
+Object oriented programming makes our project scalable.
+Handles complexity.
+Manageable
+when the project size grows, still we need to handle that complexity.
+
+
+OOP
+	Abstraction
+	Encapsulation
+	Inheritance
+	Polymorphism
+
+
+Example:
+	if we create a project for football game
+	we define
+		Ground
+		Ball
+		Player
+			GoalKeeper
+		Referee
+		Score
+we can define objects and their 
+	properties
+	behavior
+interaction between each other.
+
+
+Classes and objects
+
+A class
+	wraps data members and methods.
+
+Data members
+	variables
+	constants
+methods
+	functions
+
+static
+final
+transient
+volatile
+
+static
+	a data member of a class can be static
+	a method inside a class can be static
+	a block inside a class can be static
+
+	static block
+	static method
+	static data member
+
+A static member of a class does not belong to any particular object of the class.
+
+I can create many objects of a class. Each object can have separate instance data members. But all objects share the same static data member.
+instance is opposite to static.
+
+object is the instance of a class.			instance = object
+
+public class Employee {
+	Integer associateId;
+	String name;
+	static String companyName;
+	
+}
+
+in this class Employee,
+	what are the instance variables?
+		associateId
+		name
+	
+	what are the static variables?
+		companyName
+
+you understand the difference between static and instance?
+	instance members are specific to every instance
+
+Static method:
+-------------------
+	static method of a class can be called, even before any object of the class is created.
+	so, a static method can access only static members of the class.		(member  may be variable or constant or method)
+
+	now you understand, main method is static
+	so main can access only static methods.
+	if static method wants to access instance members
+	then it should use instance to access
+
+Static block:
+----------------
+	static
+	{
+
+	}
+a static block executes very early even before the first line of main is executed.
+
+in C++:
+we can declare a static variable inside a function.
+
+void display()	//c++
+{
+	static int count=0;		//in java this is NOT possible
+	count++;
+	cout<<count;
+}
+
+//if i call this display 5 times, then what will be output in c++?
+1
+2
+3
+4
+5
+
+instead of creating a new count variable whenever the display function is called,
+static modifier makes the count variable retain its value. 
+
+
+But in java, we cannot do that.
+in java, static is at class level. Not at method level
+-------------------------------------------------------
+final
+	means constant
+
+	final int PASS_SCORE=50;
+
+in java, all constants are in FULL_CAPITAL_LETTERS
+
+
+why final data members need to be static?
+	if Employee class has a final data member, then definitely no object is able to modify that value, hence it must be same for all.
+	why not we make it static.
+	If we make it static, then only 1 variable is available irrespective of any number of objects.
+	if we do not make it static, then every object will have separate copy of this variable.
+
+
+final class
+final method
+final data member of a class
+final data member inside a method
+
+final class:
+	this class is final in the inheritance hierarchy
+	hence, no other class is allowed to inherit this final class
+	final class cannot become a super class
+
+final method:
+	sub classes cannot override a final method
+	final method cannot be overridden 
+
+final data member of a class
+	is constant. We need to assign a value and cannot be changed
+
+final variable	variable is opposite to final
+say final data member
+
+-----------------
+transient
+	transient member of class does not participate in serialization.
+	transient member means non persistent.
+
+	suppose, if i store an object of Employee in a file.
+	transient member's value will not be stored in the file.
+
+	not only file, database also.
+--------------------
+volatile
+	volatile members are thread safe.
+	Threads usually keep the value of variable in thread cache
+	volatile members cannot be remembered by the thread cache. So it will read the volatile member from primary memory everytime.
+---------------------
+"Assignment 1: Pseudocode Development - Task: Write a detailed pseudocode for a simple program that takes a number as input, calculates the square if it's even or the cube if it's odd, and then outputs the result. Incorporate conditional and looping constructs.
+
+Assignment 2: Flowchart Creation - Design a flowchart that outlines the logic for a user login process. It should include conditional paths for successful and unsuccessful login attempts, and a loop that allows a user three attempts before locking the account.
+
+Assignment 3: Function Design and Modularization - Create a document that describes the design of two modular functions: one that returns the factorial of a number, and another that calculates the nth Fibonacci number. Include pseudocode and a brief explanation of how modularity in programming helps with code reuse and organization."
+
+Start the assignment now.
+	From where you left.
