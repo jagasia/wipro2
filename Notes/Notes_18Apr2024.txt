@@ -705,3 +705,4 @@ Exception
 Those who have completed the assignments can do this task:	(today's topic activity)
 Java_Mock_30
 	Learning Platform - Requirement 5
+https://github.com/jagasia/wipro2/blob/jag/Java/Java_Mock_30.docx
