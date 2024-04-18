@@ -493,3 +493,215 @@ University - Requirement 5
 https://github.com/jagasia/wipro2/blob/jag/Java/Java_Mock_11.docx
 
 Implement comparable and comparators to achieve this.
+
+Refer:
+	mock-11-req-2
+
+complete the code from the above project.
+
+[3:12 pm] Najuka Rajendra Tibhe
+ 
+Hi All - Please click on the link and fill feedback - 
+https://survey.zohopublic.com/zs/eXBT4R
+ 
+Mid session FB 1_24NAG0543_Jagdeeshwaran  _PCATJava_Wipro_18 Apr
+Your response would be greatly appreciated.
+-----------------------------
+Kindly complete the feedback.
+
+------------------------------------------------------------
+Set
+-----
+What is a Set?
+	Set is a collection of distinct objects.
+
+Set rejects duplicates
+Set maintains the elements in the order based on the type of set.
+HashSet
+	order is based on hashCode and equals methods
+TreeSet
+	order is based on Comparable or Comparator
+LinkedHashSet
+	order is same as the order of adding elements
+
+ListIterator does not work on Set
+Collections.sort does not work on Set
+
+
+
+
+6
+1,Raja,ECE,121212
+11,Abdul,CSE,121111
+7,Siva,CSE,111111
+8,John,ECE,132432
+8,John,ECE,132432
+7,Siva,CSE,111111
+
+	If i add these employees to HashSet, then How many elements will be added to HashSet?	6
+a) 6	CORRECT ANSWER		HashSet is not able to identify duplicates in Employee type...
+b) 4
+c) 5
+d) 3
+
+
+HashSet<Integer>	is able to identify duplicate
+hashset of any pre defined type is able to identify duplicate because,
+	that type class implements hashCode and equals method
+
+So, Employee class also must implement 
+	hashCode
+	equal
+tell me, When do you consider, 2 employees are duplicates???????
+	if 2 employees have same id, then they are duplicates.
+
+------------------------------
+TreeSet
+	then Employee should implement Comparable
+	or use Comparator
+	without either of this, 
+	a tree set will not allow adding employees to the set.
+
+
+HashSet
+	equals
+	hashCode
+
+TreeSet
+	Comparable/ Comparator
+
+	
+Assignments:
+------------------
+Day 4 and Day 5
+Task 1: Constructors
+Implement a Matrix class that has a constructor which initializes the dimensions of a matrix and a method to fill the matrix with values.
+
+Task 2: Inheritance
+Create a Shape class with a method area() and extend it with Circle and Rectangle classes overriding the area() method appropriately.
+
+Task 3: Packages/Classpath
+Create a package com.math.operations and include classes for various arithmetic operations. Demonstrate how to compile and run these using the classpath.
+
+--------------------------
+Exception Handling
+Exception Handling
+try-catch Blocks: Basic Exception Handling
+Creating Custom Exceptions: When and How to Create
+
+
+
+What is Exception?
+	during the execution of the program
+	abnormal event that disrupts the execution of the program
+	the program terminates abruptly
+
+All these are related to runtime.
+Exceptions are meant at runtime.
+But there are some exceptions which are checked by the compiler itself.
+
+public static void main(String[] args) throws ParseException {
+in the above line, do you notice ParseException
+
+public static College createCollege(String detail) throws ParseException
+	{
+//		IIT Madras,http.iitm.ac.in,7845612390, iit ,16,Tamil Nadu,15-12-1959 
+		String[] arr = detail.split(",");
+		College college=new College();
+		college.setName(arr[0]);
+		college.setWebsite(arr[1]);
+		college.setMobile(arr[2]);
+		college.setFounder(arr[3]);
+		college.setNumberOfDept(Integer.valueOf(arr[4]));
+		college.setLocation(arr[5]);
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		college.setStartingDate(sdf.parse(arr[6]));
+		return college;
+	}
+
+sdf.parse method throws this ParseException
+
+However good that we write a program, it is possible to get exceptions at runtime, which are beyond the control of the program.
+ex:
+	memory is not sufficient
+	File is delete by someone
+	Network failure
+	
+
+these are some example for situations which are beyond the control of the program.
+
+So, getting exceptions is normal. But unhandled exceptions disturb the users by terminating the program.
+
+Exception handling:
+--------------------------
+	Providing the program an alternate path to continue, during the exception
+
+Types of exception:
+	Checked Exceptions
+	Unchecked Exceptions
+
+Checked exceptions
+	are checked by the compiler.
+	compiler expects you to either
+		i) handle the exception (or)
+		ii) declare with throws clause
+	serious exception which cannot be ignored
+
+	Any class that is derived directly from Exception class or its sub class is a checked Exception
+		ex:
+			ParseException
+			InterruptedException			(Thread.sleep)
+			IOException
+
+Unchecked exceptions
+	are not checked by the compiler
+	they are meant for runtime
+	it may be handled or leave it as unhandled
+
+	Any class that is derived directly from RuntimeException or its sub class is an unchecked Exception
+		ex:
+			ArithmeticException	
+			ArrayIndexOutOfBoundsException
+			NumberFormatException
+			ConcurrentModificationException
+
+Why exception was introduced?
+	
+	Ajay is creating a class called "Bank"
+	and he creates a method called "withdraw"
+		now, there is a daily limit to withdraw
+class Bank
+{
+	public void withdraw(int amount)
+	{
+		if(amount>30000)
+		{
+			//this is wrong. But what to do in that case, Ajay cannot decide.
+			//those who call this method has to decide.		This is where exceptions are useful.
+			//Ajay throws Exception and expect Gayathri to handle the exception
+		}
+	}
+}
+
+Gayathri uses this class Bank
+
+
+To handle an exception, we can use
+	try block
+	catch block
+	finally block
+
+
+Object
+	Throwable
+		Error
+		Exception
+
+Error
+	cannot be handled using try-catch method
+Exception
+	can be handled using try-catch method
+
+Those who have completed the assignments can do this task:	(today's topic activity)
+Java_Mock_30
+	Learning Platform - Requirement 5

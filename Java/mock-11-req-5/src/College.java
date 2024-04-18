@@ -99,14 +99,13 @@ public class College implements Comparable<College>{
 
 	@Override
 	public int compareTo(College o) {
-		// write your code here
-		return 0;
+		return this.getName().compareTo(o.getName());
 	}
 
 	@Override
 	public String toString() {
 		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-		return String.format("%-15s %-20s %-15s %-15s %-20s %-15s %s\\n", name,website,mobile,founder,numberOfDept,location,sdf.format(startingDate));
+		return String.format("%-15s %-20s %-15s %-15s %-20s %-15s %s\n", name,website,mobile,founder,numberOfDept,location,sdf.format(startingDate));
 	}
 	
 	
