@@ -356,3 +356,140 @@ Java_Mock_21.docx
 	https://github.com/jagasia/wipro2/blob/jag/Java
 Food aggregator - Requirement 3
 ----------------------------------------
+
+As i already mentioned,
+	List can be sorted using
+		Collections.sort method
+Arrays.sort is used to sort an array. Similarly 
+Collections.sort method is used to sort a List	(but not Set)
+
+Collections.sort or Arrays.sort works only on types that are comparable.
+
+If you cannot compare 2 objects, then you cannot sort an array of that type of objects.
+
+ArrayList<Integer>
+	you know how to compare to Integers.
+	so you can sort this list.
+
+ArrayList<College>
+	how do you sort this list???????
+	If 2 colleges can be compared, then this list can be sorted.
+
+		Integer i=30;
+		Integer j=30;
+		System.out.println(i.compareTo(j));
+
+compareTo method returns
+	-1		i-j is negative means	i is smaller than j
+	0		
+	1
+
+
+Why Collections.sort works for Integer type list?
+	it is because, Integer class implements Comparable interface
+	and override, the "compareTo" method.
+
+public final class Integer extends Number
+        implements Comparable<Integer>, Constable, ConstantDesc {
+
+
+Most of the in-build types implement comparable interface.
+All wrapper classes
+String class
+Date class
+	all of these implements comparable interface
+
+But,
+If we create a class like Employee, 
+	then Employee class must implement Comparable interface
+	so that List<Employee> can be sorted using Collections.sort method
+
+
+4
+1,Raja,ECE,121212
+11,Abdul,CSE,121111
+8,John,ECE,132432
+7,Siva,CSE,111111
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class App4 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int no=sc.nextInt();
+		List<Employee> empList=new ArrayList<>();
+		for(int i=0;i<no;i++)
+		{
+			String detail=sc.nextLine();
+			if(detail.equals(""))
+				detail=sc.nextLine();
+			String[] arr = detail.split(",");
+			Employee employee=new Employee(Integer.valueOf(arr[0]), arr[1], arr[2], Integer.valueOf(arr[3]));
+			empList.add(employee);
+		}
+		
+		Collections.sort(empList);
+		
+		for(Employee e:empList)
+			System.out.println(e);
+	}
+
+}
+
+
+Error:
+The method sort(List<T>) in the type Collections is not applicable for the arguments (List<Employee>)
+
+Employee does not implement Comparable, so List<Employee> cannot be sorted.
+
+
+2-3	is asc
+3-2	is desc
+
+
+Now, Employee class can implement Comparable and override the compareTo method.
+At run time, we sort the list of employees, in the order mentioned in the compareTo method.
+
+But have you seen websites, where you are provided with lot of sort options.
+sort by date
+sort by time
+sort by price
+sort by destination
+how at runtime, we are able to change the comparison?
+
+We can create additional classes that implements Comparator.
+
+Comparable
+Comparator
+
+import java.util.Comparator;
+
+public class EmployeeSalaryComparator implements Comparator<Employee>
+{
+
+	@Override
+	public int compare(Employee o1, Employee o2) {
+		//suppose if salary is primitive int type, then
+//		return o1.getSalary()-o2.getSalary();
+		return o1.getSalary().compareTo(o2.getSalary());
+	}
+
+}
+
+the above is used to sort by salary
+we can also create comparators to sort by name also, department also.
+
+----------------------------
+Task:
+	Java_Mock_11.docx
+
+University - Requirement 5
+
+https://github.com/jagasia/wipro2/blob/jag/Java/Java_Mock_11.docx
+
+Implement comparable and comparators to achieve this.
