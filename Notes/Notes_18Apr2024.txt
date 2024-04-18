@@ -1,0 +1,184 @@
+18-Apr-2024
+------------------
+day #7
+---------
+Polymorphism: Method Overloading and Overriding
+Organizing Code
+Packages: Creating and Using Packages
+Classpath: Understanding and Setting the Classpath
+Java Modules: Modular Programming in Java
+
+Complete these OOP concepts and will try to start Exception handling today.
+Take stock of Assignment completion. Today evening, we expect GIT credentials from RPS.
+-----------------------------------
+If you want a demo on how to set up git in Cloud lab and push content to git remote repository, you can ask me for demo.
+------------------------------------------
+GitLab 
+	username
+	password
+will be shared by RPS
+
+---------------------------
+Method Overloading
+Method Overriding
+	what is the difference between these 2?
+
+Method overloading
+	same method name but different signature.
+	both methods are in same class.
+
+
+class Parent{
+	public void method()
+	{
+		System.out.println("Parent method");
+	}
+}
+class Child extends Parent
+{
+	public void method()	//overriding
+	{
+		System.out.println("Child method");
+	}
+	public void method(int i)	//overloading
+	{
+		System.out.println("child method with arg");
+	}
+}
+public class App {
+
+	public static void main(String[] args) {
+		Child c=new Child();
+		c.method();
+	}
+
+}
+--------------------
+i HAVE given the rules of 
+overloading
+overriding
+in yesterday's notes.
+
+-----------------------
+There are many classes.
+a class has data and methods
+how we control the access of these members of the class.
+
+How default access specifier works?
+
+class Employee
+{
+	String department
+}
+
+department is having default access.	
+what is meant by default access?
+	no access specifier
+	and it is accessible from any class inside same package.
+
+so far, we created classes inside default package.
+lets create packages now.
+
+What is a package?
+	package is a group of classes and interfaces.
+
+Every class is stored in a file.
+Every package is a folder.
+java.util is a package
+then there is a folder called java
+and the util is a sub folder inside java folder.
+
+for every package, there will be a folder
+like a folder can contain subfolders, 
+a package can contain sub packages.
+
+in eclipse, it is easy to create packages.
+
+package name follows the convention:	
+	first portion is either com / org
+		company means 	com
+		organisation means	org
+	second portion is the name of the company/ organisation
+	third portion is the project name
+	fourth portion is the role of the package
+		model
+		view
+		controller
+		service
+		repository
+		controller
+		entity
+	
+
+	com.wipro.hrms
+
+We can create a package using
+	File -> New -> Package
+and then add classes inside the package.
+or
+
+While creating a class itself we can mention the package name.
+or
+
+After creating a class, we can introduce package also.
+	type
+		package com.wipro.hrms;
+
+and right click the error, move Employee.java to com.wipro.hrms package
+
+----------------------------
+You need to experiment by creating multiple packages
+and check the access of each member of a class.
+
+package com.wipro.hrms;
+
+import com.wipro.hrms.entity.Employee;
+
+public class ContractEmployee extends Employee 
+{
+	public static void main(String []args)
+	{
+		Employee emp=new Employee();
+		emp.id=1;			//public
+//		emp.name="Raja";	//protected	can be accessed from subclass
+//		emp.department="IT";//default	only accessible in same package
+//		emp.dateOfBirth=new Date();		//NOT accessible (private)
+		ContractEmployee ce=new ContractEmployee();
+		ce.name="Siva";	//protected		sub class of any package
+		ce.id=222;		//public
+		ce.department="ECE";	//default 	so not available in different package
+		
+				
+	}
+}
+
+
+
+Packages not only organize the code.
+They decide the access level of members of a class.
+
+in command prompt:
+how packages are created.
+	because, every package refers to a folder.
+	the compiled class will be inside the folder (of package name).
+
+
+if i compile a java program with package declaration in cmd prompt??????????
+	what should we do?	to create the folder and keep class files inside that folder.
+
+
+package com.upskillit.hrms.entity;
+public class College
+{
+}
+
+when i compile this program, i will use 
+	-d switch to create directory automatically in specified location
+	
+javac -d . College.java
+
+
+Task:
+------
+Java_Mock_21.docx
+	Food aggregator - Requirement 1
