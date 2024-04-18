@@ -182,3 +182,177 @@ Task:
 ------
 Java_Mock_21.docx
 	Food aggregator - Requirement 1
+
+
+what is a property of a class.
+	any non-public data member, with public getter or setter or both is a property.
+
+	if only setter is there, it is a write-only property
+	if only getter is there, it is read-only property
+	if both are there, it is read, write property
+	if both are not there, it is not a property
+
+--------------------------------------------------------------------------------
+Java Collections Framework and Generics
+Arrays: Declaration, Initialization, and Usage
+
+Limitations of array
+that leads to inventing new collections
+
+Collections have advantages over arrays.
+	i) we do not know the size of the collection when we create them.
+		array needs to know the size when it is created
+	ii) different type of collection and each have their own advantages.
+
+Collections can be created on Reference type only.
+Wrapper classes or any type BUT NOT PRIMITIVE TYPES
+
+List interface.		java.util package
+	this interface is implemented by lot of classes
+		ArrayList
+		LinkedList
+		Vector		(legacy class, means, old)	it is synchronized.
+
+Set interface		java.util package
+		HashSet
+		TreeSet
+		LinkedHashSet
+
+Map	is an application of collection.		Map is not collection.
+Map interface
+		HashMap
+		TreeMap
+		LinkedHashMap
+
+
+List
+	allows duplicates
+	is ordered
+	have index.	so we can have direct access to an element using its index
+	We can use Collections.sort() to sort a list
+
+Set
+	rejects duplicates. If we try to enter an element which is already present, then that attempt is rejected.
+	Order of Set is based on the type of the Set.
+		HashSet		order is based on hashCode and equals method
+		TreeSet		order is based on Comparable/ Comparator		is sorted.
+		LinkedHashSet	order is based on the order in which the elements are added. 	Similar to List
+
+Map
+	is 2 dimensional data structure, which has
+		Key - Value pair
+
+	Key is a set.		Means, Set
+		Key must be unique.
+		If duplicate key is found while putting an entry to the Map, then its value is updated.
+		Map does not reject duplicate key. It updates value when the key is duplicate
+		Map allows one entry where key is null.		Another entry with null key is considered duplicate and update the value.
+
+Iterator
+	is used to traverse/ visit every element of the List/ Set
+	is forward only 		
+	has only 3 methods
+		hasNext()		returns true, if any more element is available to iterate
+		next()		returns next element
+		remove()		removes the current element
+ListIterator
+	is used only with List type of collections
+	we can move forward/ backward using ListIterator.	
+	has additonal methods (apart from those 3 of Iterator)
+		hasPrevious()	returns true if any more element is available to iteratore
+		previous()		returns the previous element
+
+	List<Integer> marks=new ArrayList<>();
+		//left side of the declaration is List interface
+		//right side of the declaration is implementation of List interface
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class App {
+
+	public static void main(String[] args) {
+		List<Integer> marks=new ArrayList<>();
+		marks.add(20);
+		marks.add(50);
+		marks.add(15);
+		marks.add(60);
+		marks.add(35);
+		marks.add(40);
+		System.out.println(marks);
+	}
+
+}
+
+
+[20, 50, 15, 60, 35, 40]
+
+
+This proves that a List is ordered.
+Order is not ascending or descending order. It is the order in which the elements are added to the list.
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class App2 {
+	public static void main(String[] args) {
+		List<Integer> list = Arrays.asList(34,21,26,54,38,76,90,89);
+		Collections.sort(list);
+		System.out.println(list);
+	}
+}
+
+[21, 26, 34, 38, 54, 76, 89, 90]
+
+
+NOTE:
+	Collections.sort() does not work on Set or Map.
+	It works only on List.
+
+
+
+TreeSet is sorted.
+But you cannot use Collections.sort()
+This means, while adding elements to a TreeSet, the element is not always added at the end.
+	It is added in such a way, it is sorted.
+TreeSet does not allow altering the order later.
+
+List is ordered in the same way as added, means, it is adding elements at the end.
+	Later, we can sort list using Collections.sort()
+
+Some common methods found in most of the collections:
+	add()
+	add(index, object);
+	addAll()
+	contains()		boolean
+	remove(int)		remove at index
+		ex:
+			marks.remove(1);			//1 is primitive int, so it is considered as index
+	remove(obj)		remove that element
+		ex:
+			marks.remove(new Integer(1));		//new Integer(1) is object so it is considered as element
+
+
+How do you find an item from a list?
+	ArrayList<Integer> means,
+		contains method will return
+
+	ArrayList<College> means,
+		i) you may loop the collection and check if each college has the specific value or not
+		ii) override the equals method of College to check specific values match means equal
+			then create a College object with that specific value and use "contains" method
+
+----------------------------------------
+Java_Mock_11.docx
+	https://github.com/jagasia/wipro2/blob/jag/Java/Java_Mock_11.docx
+
+University - Requirement 2
+	Solve this now.
+
+-------------------------------
+Java_Mock_21.docx
+	https://github.com/jagasia/wipro2/blob/jag/Java
+Food aggregator - Requirement 3
+----------------------------------------
