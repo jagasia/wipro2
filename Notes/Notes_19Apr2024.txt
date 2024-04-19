@@ -468,6 +468,12 @@ App.java is present in
 
 Break from 12:45 - 13:45
 
+
+Solution:
+https://github.com/jagasia/wipro2/tree/jag/Java/mock-21-req-6
+
+
+----------------
 Task:
 	Mock 30 req 6
 -----------------------------------
@@ -476,4 +482,4 @@ One User Many Purchase
 1..M	User Purchase
 1..1	Purchase User
 
-Solution:
+Skeleton is uploaded in git:
