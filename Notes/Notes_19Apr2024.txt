@@ -217,3 +217,192 @@ public class App {
 }
 
 ----------------------------
+Assignment of Exception handling
+----------------------------------------------
+Differentiating between various Set implementations.
+	HashSet
+		order is based on hashCode() and equals() method
+	TreeSet
+		it is based on SortedSet 
+		order is sorted based on Comparable or Comparator
+	LinkedHashSet
+		order is based on the insertion order
+
+Map interface
+	implemented by
+		HashMap
+		TreeMap
+		LinkedHashMap
+
+Map is a 2 dimensional data structure.
+	every element in the map is called as "Entry"
+	an Entry has "Key" and "Value"
+
+Map is not a collection. It is an application of collection
+	Key is a set
+	Key in HashMap is HashSet
+	Key in TreeMap is TreeSet
+	Key in LinkedHashMap is LinkedHashSet
+
+List and Set have some common methods like	
+	add() method
+but Map does not have add method at all. Instead it is
+	put() method
+
+put(key, value);
+
+get(key)	returns the value
+
+put method is used to
+	add an entry (or)
+	update an existing entry	(how?)	if the key is already found, then its value is updated
+
+put is the same method to add or update entry to the map.
+
+There is no iterator for map.
+	so what will we do?
+		there are many ways, we can iterate the elements of a Map.
+			i) get the keys as a set. and set supports iterator
+				Set<T> keys=map.keySet();		returns all keys as a Set
+				keys.iterator();
+	
+			ii) get the entries as a set
+				map.entrySet();		you will get set of entries. then use iterator
+
+		in both cases, you can use iterator or for each loop
+			inside the loop if you want to remove, then do not use for each loop. instead, use iterator.
+
+---------------------
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
+
+public class App {
+
+	public static void main(String[] args) {
+		Map<Integer, String> map=new TreeMap<>();
+		map.put(5, "Australia");
+		map.put(1, "India");
+		map.put(3, "Pakistan");
+		map.put(2, "Bangladesh");
+		map.put(7, "Sri lanka");
+		map.put(6, "Japan");		//add an entry
+		map.put(6, "China");		//update an entry
+		
+		for(Entry<Integer, String> e:map.entrySet())
+		{
+			System.out.println(e.getKey()+"\t"+e.getValue());
+		}
+	}
+
+}
+
+----------------------
+Challenge:
+Accept a sentence as input from the user.
+Display the character and their number of occurrance as output.
+
+sample input:
+	this sentence is typed by me now
+sample output:
+	t	3
+	h	1
+	i	2
+	s	2
+		6
+	e	5
+	n	3
+	c	1
+	y	2
+	p	1
+	d	1
+	b	1
+	m	1
+	o	1
+	w	1
+Hint:
+	use map to maintain, Character vs Integer	
+	Map<Character,Integer> map=new LinkedHashMap<>();
+
+LinkedHashMap maintains the key in LinkedHashSet way
+ie., in the same or of insertion.
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+public class App2 {
+
+	  public static void main(String[] args) {
+		  Scanner sc=new Scanner(System.in);
+		  String input=sc.nextLine();
+		  Map<Character, Integer> map=new LinkedHashMap<>();
+		  
+		  for(Character c : input.toCharArray())
+		  {
+			  //if c is already found in map, then increment the count 
+			  //if c is not found in the map, then it should be count as 1
+//			  Integer value = map.get(c);
+//			  if(value==null)
+//			  {
+//				  value=0;
+//			  }
+//			  value++;
+			  
+			  Integer count = map.getOrDefault(c, 0);
+			  count++;
+			  map.put(c, count);
+		  }
+		  
+		  for(Entry<Character, Integer> entry:map.entrySet())
+		  {
+			  System.out.println(entry.getKey()+"\t"+entry.getValue());
+		  }
+	  }
+
+}
+
+----------------------------
+Task:
+Java_Mock_11.docx
+	https://github.com/jagasia/wipro2/blob/jag/Java/Java_Mock_11.docx
+
+University - Requirement 6
+-----------------------------------
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) throws ParseException {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number of colleges:");
+		int noOfCollege=sc.nextInt();
+		List<College> list=new ArrayList<>();
+		for(int  i=0;i<noOfCollege;i++)
+		{
+			String detail = sc.nextLine();
+			if(detail.equals(""))
+				detail=sc.nextLine();
+			College college=College.createCollege(detail);
+			list.add(college);
+		}
+		Map<String, Integer> map = College.calculateLocationCount(list);
+		
+		System.out.format("%-15s %s\n","Location","Count");
+		for(Entry<String, Integer> e:map.entrySet())
+		{
+			System.out.format("%-15s %s\n",e.getKey(),e.getValue());
+		}
+		
+	}
+
+}
+
+
