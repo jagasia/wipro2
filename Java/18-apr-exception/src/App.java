@@ -1,10 +1,12 @@
+import java.io.IOException;
+
 class Bank
 {
-	public void withdraw(int amount)
+	public void withdraw(int amount) throws IOException
 	{
 		if(amount>30000)
 		{
-			throw new NumberFormatException("Amount cannot be > 30k");
+			throw new IOException("Amount cannot be > 30k");
 		}else
 		{
 			System.out.println("Remember to collect the cash");
@@ -15,12 +17,14 @@ public class App {
 
 	public static void main(String[] args) {
 		Bank sbi=new Bank();
-		try
+		try {
+			sbi.withdraw(33000);
+		} catch (IOException e) {
+			System.out.println("Exception is handled");
+			throw new NumberFormatException();
+		}finally
 		{
-			sbi.withdraw(31000);
-		}catch(Exception ex)
-		{
-			System.out.println(ex.getMessage());
+			System.out.println("this is finally");
 		}
 		System.out.println("Continue");
 		

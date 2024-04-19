@@ -1,0 +1,219 @@
+19-Apr-2024
+-----------------
+Day #8
+---------
+We have covered few portions of Exception handling. (pending)
+	try-catch-finally
+	custom exception
+	throw vs throws
+We have covered few portions of Collections (pending)
+	Maps
+	ListIterator
+	Lambda
+	Stream API
+--------------------------------------
+Algorithm based problem solving handson.
+---------------------------------------
+Afternoon, during lunch break, i plan to go to Election poll booth for voting. 
+On that time, i will give you handson tasks.
+---------------------------------------
+Exception handling:
+-------------------------
+Handling exception provides the program an alternate path to continue, when exception occur at runtime.
+For each type of exception, it is better to have separate catch block rather than handling all type of exceptions in same catch block.
+
+x/y		if y is 0, then sun microsystem (oracle) knows that denominator cannot be 0. But in that case, what to do?
+		they don't want to decide. They want you to decide. So they raise exception. Allowing us to handle the exception.
+
+Exception propagation:
+	if exception occurred in sql statement execution in database, then it will propagate to the calling environment.
+	what is the calling environment, JDBC?
+		JDBC program can handle the exception
+			if not?	this jdbc program was called from a BO program. the unhandled exception from jdbc propagates to the calling env.
+				BO, can handle this exception. If not, it propagates to the calling environment, View.
+					View can handle the exception	(view can be angular/ react) they can handle the exception.
+
+
+
+
+throws vs try block
+---------------------------
+in any java method, we throw an exception or 
+call a method that throws an exception
+	we have 2 options
+		i) handle the exception using try block
+		ii) declare the exception using throws clause
+
+throws clause is used for checked exceptions
+unchecked exceptions do not demand you to handle or declare (compiler does not check them)
+
+try block
+	is called as a guarded section
+	any exception occurred in this block can be handled by the subsequent catch blocks 
+	
+catch block
+	always used with a try block
+	catch specifies the type of exceptions it handle
+	if any of such exceptions occurred in the try block, then this catch block will execute
+	there can be any number of catch blocks for a try	0 or more
+	can a try block exist without a catch block. Yes, if finally block is present.
+
+finally block
+	this block is used with a try block
+	whenever the program enters a try block, then finally block is executed for sure.
+	no matter, exception occurred or not. exception handled or not. But finally is done for sure.
+	comes after all the catch blocks.
+
+we can find another try inside a try
+another try inside a catch
+another try inside a finally
+-------------------------------------
+Custom exceptions
+	also called as User defined Exceptions
+
+If the amount is > 30k, then we need to raise exception.
+None of the pre defined exceptions are matching our requirement.
+So we are going define our exception class as
+	InvalidAmountException	
+	MaximumLimitExceededException
+
+if you see our employee class
+	id
+	name
+	department
+	salary
+
+do you remember we have setter methods for them
+
+in setter, we need to validate the data entered for these items
+and if they are invalid then we should throw appropriate exceptions here.
+
+
+public class InvalidIdException extends Exception	//checked exception
+{
+//whenever we throw an exception object, we can pass message as argument
+	//	throw new InvalidIdException("......");
+	public InvalidIdException(String message)
+	{
+		super(message);
+	}
+	
+	//they may handle using any of the super class
+	//		catch(Exception ex)	{		ex.getMessage();
+}
+
+
+
+
+
+
+What is the difference between
+	public class InvalidIdException extends Exception	//checked exception
+	public class InvalidNameException extends RuntimeException //unchecked
+
+extends Exception vs extends RuntimeException?
+	ans: checked vs unchecked
+
+
+public class Employee
+{
+	private Integer id;
+	private String name;
+	private String department;
+	private Integer salary;
+	
+	public Employee() {}
+
+	public Employee(Integer id, String name, String department, Integer salary) throws InvalidIdException {
+		super();
+//		this.id = id;
+		setId(id);
+//		this.name = name;
+		setName(name);
+		this.department = department;
+		this.salary = salary;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) throws InvalidIdException {
+		if(id<0)
+			throw new InvalidIdException("Id is invalid");
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		if(name.length()<1)
+			throw new InvalidNameException("Name is invalid");
+		this.name = name;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public Integer getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Integer salary) {
+		this.salary = salary;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + getId() + ", name=" + name + ", department=" + department + ", salary=" + salary + "]";
+	}
+
+
+	
+}
+
+
+in our setter methods, we check for invalid data and throw appropriate messages.
+
+------------------------------
+who will handle these exceptions?
+	App.java
+
+
+public class App {
+
+	public static void main(String[] args) {
+		Employee raja=new Employee();
+		try {
+			raja.setId(-1);
+		} catch (InvalidIdException e) {
+			System.out.println(e.getMessage()+"\nreplacing id as 0");
+			try {
+				raja.setId(0);
+			} catch (InvalidIdException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
+		try
+		{
+			raja.setName("");
+		}catch(InvalidNameException e)
+		{
+			System.out.println(e.getMessage()+"\nreplacing name as unknown");
+			raja.setName("unknown");
+		}
+		System.out.println(raja);
+	}
+
+}
+
+----------------------------

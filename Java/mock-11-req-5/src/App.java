@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class App {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException  {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the number of the colleges:");
 		int noOfCollege=sc.nextInt();

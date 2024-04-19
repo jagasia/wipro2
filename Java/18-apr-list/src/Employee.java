@@ -21,6 +21,8 @@ public class Employee implements Comparable<Employee>
 	}
 
 	public void setId(Integer id) {
+		if(id<0)
+			throw new NumberFormatException("Invalid id");
 		this.id = id;
 	}
 
