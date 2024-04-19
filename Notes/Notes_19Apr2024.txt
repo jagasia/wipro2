@@ -483,3 +483,39 @@ One User Many Purchase
 1..1	Purchase User
 
 Skeleton is uploaded in git:
+https://github.com/jagasia/wipro2/tree/jag/Java/mock-30-req-6
+ you need to complete the code in
+	UserScore file
+		static Map<String,UserScore> getTopPerformer(List<UserScore> scoreList)
+		{
+			return null;		//write your code here
+		}
+
+
+complete this part and run and check the test cases.
+------------------------------------------------------
+1,2,3,4,5,6,7,8
+boolean flag=false;
+if you remove an element inside for each loop, you ConcurrentModificationException
+
+it=list.iterator();
+while(it.hasNext())
+{
+	if(flag)
+		it.remove();
+	flag=!flag;
+
+1	flag=false
+2	flag=true		remove 2
+3	flag=false
+4	flag=true		remove 4
+	
+
+---------------------------------
+Lambda
+Stream API
+
+	Lambda provides quick implementation of functional interface
+	what is functional interface?
+
+	Stream API is used to work on collections.

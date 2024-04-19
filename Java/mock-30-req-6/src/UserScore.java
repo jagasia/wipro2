@@ -41,6 +41,7 @@ public class UserScore {
 	
 	static Map<String,UserScore> getTopPerformer(List<UserScore> scoreList)
 	{
+		
 		return null;		//write your code here
 	}
 }
