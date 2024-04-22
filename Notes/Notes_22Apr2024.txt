@@ -1,0 +1,175 @@
+Lambda
+Stream API
+22-Apr-2024
+Day #9
+----------------------
+I got git credentials for trainer.
+You all also got the git credentials.
+
+1) from local system, (you have done some assignments), 
+	how to move them to cloud lab.
+2) from cloud lab (only the git credentials they provided will work)	GitLab
+	we need to use the git credentials and push the assignments to the official gitlab
+
+	from cloud to gitlab
+		we use official git lab credentials
+
+Challeng 1:
+	moving my files from local system to cloud lab:
+
+https://cloud2.rpsconsulting.in/console/#/
+
+i have logged into cloud lab, using TR credentials.
+
+From local machine to Cloud lab
+	create a github repository
+	upload your files to this github
+
+Those who do not have git hub credentials
+	i) you signup to github.com free and login
+	ii) if you are comfortable with google drive, then
+		create a folder in google drive and download them in cloud lab.
+
+	
+
+using github to upload files from local system to github
+i) login to github.com
+ii) create a repository
+	click the + button "New Repository"
+	i have created a repository "vemula"
+iii) click the hyperlink "upload an existing file"
+iv) click "choose your files"
+	only 25 mb is allowed per attachment
+	do it one by one if the file size together is > 25 mb
+	click commit changes
+v) continue to add files using
+	Add file button
+		upload files
+
+in this way, you can upload lot of files one by one or together
+
+
+
+
+package com.math.operations;
+
+
+
+in cloud lab:
+	c:\users\Administrator
+		create a "Training" folder
+			inside that "Assignments" folder
+				"PCAT"
+				"Java"
+
+---------------------------------------------------------------------
+RPS have provided you all with separate
+	gitlab credentials
+
+GitLab
+	is an enterprise Git portal.
+
+	you should login to GitLab using
+		emailId		(provided by RPS)	username for gitlab
+		password
+
+After logging in to gitlab
+	you have to create a repository		"assignment"
+
+	gitlab.com/rpsemail/reponame
+	gitlab.com/rpsemail/assignment
+
+	gitlab.com/b55user01/assignment
+--------------All These steps to be done only in CLOUD LAB---------------------------------
+Step 1:
+	GO TO CLOUD LAB
+
+Step 2:
+	open edge browse and type this following url:
+
+	http://10.10.16.125:8929
+
+
+b55user01@rpsconsulting.in
+
+Wherewill1go
+
+summay:
+	i logged to cloud lab
+	in cloud lab,
+		i went to git lab using
+			url:
+				http://10.10.16.125:8929
+	i used trainer email id and password
+	i have changed password.
+
+
+24NAG0543_U20
+Welcome@1
+Mekala Priyanjalee
+
+loggin to cloud (confirm your cloud login with admin if required)
+-----------inside cloud-----------
+1) in edge browser 
+	http://10.10.16.125:8929
+2) login using
+	email and password given to you in email
+3) Create a project
+	create a blank project
+		project name: assignment
+		visibility level: PUBLIC
+		UNTICK initialize repository with README
+		
+		CLICK the create project button
+	no need to add ssh key
+
+copy the URL and paste it in notepad for your future reference
+	wrong:
+	http://gitlab.rpsconsulting.in:8929/wipronga_batch55/assignment.git
+
+correct:
+	http://10.10.16.125:8929/wipronga_batch55/assignment.git
+
+
+1) go to the folder that contains all your assignments
+	in address bar type cmd enter
+2) in cmd, you are in the correct location to push your files to gitlab.
+
+	git init
+	git remote add origin http://10.10.16.125:8929/wipronga_batch55/assignment.git
+	(this is done only once)
+	if wrongly done, tell me, i will tell fix for that.....
+
+	git branch -M master
+
+	git add .
+	git commit -m "first"
+
+it is asking me who you are?
+	you need to use, the credentials given to you by EMAIL
+		git config --global user.email <<youremail>>
+		git config --global user.name <<username>>
+
+	git commit -m "first"
+this time commit is successful.
+	git push origin master
+
+
+
+to fix any problems, you can retry by deleting .git folder
+it is invisible folder
+	del .git
+		are you sure : y
+
+
+
+
+
+
+
+
+
+
+
+
+
